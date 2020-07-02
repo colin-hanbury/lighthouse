@@ -18,6 +18,7 @@
             android:padding="16dp"
             android:background="@color/colourTransparent"
             android:src="@drawable/ic_arrow_back"
+            android:layout_gravity="left"
             android:visibility="gone"/>
 
         <Button
