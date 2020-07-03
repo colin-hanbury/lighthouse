@@ -1,11 +1,12 @@
-package screens.common.navigation;
+package screens.common.navigation.tabhelper;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import screens.map.MapFragment;
+
+import screens.map.MapsFragment;
 import screens.record.RecordFragment;
 import screens.settings.SettingsFragment;
 
@@ -22,7 +23,7 @@ public class PageAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (position){
             case 0:
-                return new MapFragment();
+                return new MapsFragment();
             case 1:
                 return new RecordFragment();
             case 2:

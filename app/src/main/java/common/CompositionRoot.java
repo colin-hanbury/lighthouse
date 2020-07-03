@@ -6,6 +6,9 @@ import android.view.LayoutInflater;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
+import screens.common.navigation.fragmenthelpers.FragmentFrameHelper;
+import screens.common.navigation.fragmenthelpers.FragmentFrameWrapper;
+import screens.common.navigation.screennavigation.ScreensNavigator;
 import screens.common.viewfactory.LightHouseViewFactory;
 
 
@@ -89,17 +92,17 @@ public class CompositionRoot {
 //        return new FetchLogout(getContext());
 //    }
 //
-//    public ScreensNavigator getScreensNavigator() {
-//        return new ScreensNavigator(getFragmentFrameHelper());
-//    }
-//
-//    private FragmentFrameHelper getFragmentFrameHelper() {
-//        return new FragmentFrameHelper(getActivity(), getFragmentFrameWrapper(), getFragmentManager());
-//    }
-//
-//    private FragmentFrameWrapper getFragmentFrameWrapper() {
-//        return (FragmentFrameWrapper) getActivity();
-//    }
+    public ScreensNavigator getScreensNavigator() {
+        return new ScreensNavigator(getFragmentFrameHelper());
+    }
+
+    private FragmentFrameHelper getFragmentFrameHelper() {
+        return new FragmentFrameHelper(getActivity(), getFragmentFrameWrapper(), getFragmentManager());
+    }
+
+    private FragmentFrameWrapper getFragmentFrameWrapper() {
+        return (FragmentFrameWrapper) getActivity();
+    }
 //
 //    public BackPressDispatcher getBackPressDispatcher() {
 //        return (BackPressDispatcher) getActivity();

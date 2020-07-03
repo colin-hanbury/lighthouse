@@ -2,9 +2,9 @@ package screens.map;
 
 import screens.common.view.IBaseObservableView;
 
-import static screens.map.IMapView.*;
+import static screens.map.IMapsView.*;
 
-public interface IMapView extends IBaseObservableView<Listener> {
+public interface IMapsView extends IBaseObservableView<Listener> {
 
     interface Listener {
         void onBackClicked();

@@ -3,7 +3,6 @@ package screens.common.controllers;
 import androidx.fragment.app.Fragment;
 
 import common.CompositionRoot;
-import common.LightHouseApp;
 
 public class BaseFragment extends Fragment {
 

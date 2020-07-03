@@ -18,7 +18,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import hanbury.colin.networking.R;
 import screens.common.controllers.BaseFragment;
 
-public class MapFragment extends BaseFragment implements IMapView.Listener {
+public class MapsFragment extends BaseFragment implements IMapsView.Listener {
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
@@ -38,30 +38,37 @@ public class MapFragment extends BaseFragment implements IMapView.Listener {
             googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
         }
     };
-    private IMapView mIMapView;
+
+    public static MapsFragment newInstance(){ //String questionId) {
+        //Bundle args = new Bundle();
+        //args.putString(ARG_QUESTION_ID, questionId);
+        MapsFragment fragment = new MapsFragment();
+        //fragment.setArguments(args);
+        return fragment;
+    }
+    private IMapsView mIMapsView;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        mIMapView = getCompositionRoot().getLightHouseViewFactory().getMapView(container);
-        return mIMapView.getRootView();
+        mIMapsView = getCompositionRoot().getLightHouseViewFactory().getMapView(container);
+        return mIMapsView.getRootView();
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        SupportMapFragment mapFragment =
-                (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
-        if (mapFragment != null) {
-            mapFragment.getMapAsync(callback);
-        }
-    }
+//    @Override
+//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+//        super.onViewCreated(view, savedInstanceState);
+//        SupportMapFragment mapFragment =
+//                (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+//        if (mapFragment != null) {
+//            mapFragment.getMapAsync(callback);
+//        }
+//    }
 
     @Override
     public void onBackClicked() {
-
     }
 
     @Override

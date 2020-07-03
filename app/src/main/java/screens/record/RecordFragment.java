@@ -14,6 +14,13 @@ import screens.common.controllers.BaseFragment;
 
 public class RecordFragment extends BaseFragment implements IRecordView.Listener{
 
+    public static RecordFragment newInstance(){ //String questionId) {
+        //Bundle args = new Bundle();
+        //args.putString(ARG_QUESTION_ID, questionId);
+        RecordFragment fragment = new RecordFragment();
+        //fragment.setArguments(args);
+        return fragment;
+    }
 
     private IRecordView mIRecordView;
 

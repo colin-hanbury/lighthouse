@@ -12,6 +12,14 @@ import screens.common.controllers.BaseFragment;
 
 public class SettingsFragment extends BaseFragment implements ISettingsView.Listener{
 
+    public static SettingsFragment newInstance(){ //String questionId) {
+        //Bundle args = new Bundle();
+        //args.putString(ARG_QUESTION_ID, questionId);
+        SettingsFragment fragment = new SettingsFragment();
+        //fragment.setArguments(args);
+        return fragment;
+    }
+
     private ISettingsView mISettingsView;
 
     @Override
