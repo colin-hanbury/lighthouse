@@ -1,4 +1,4 @@
-package data.Sighting;
+package data.sighting;
 
 public class Sighting {
 }

@@ -20,21 +20,22 @@ public class ScreensNavigator {
 
     public void toMapsScreen(){ //String questionId) {
         Log.i(TAG, "navigating to Map screen");
-        mFragmentFrameHelper.replaceFragmentAndClearBackstack(MapsFragment.newInstance()); //questionId));
+        mFragmentFrameHelper.replaceFragmentAndClearBackstack(MapsFragment.newInstance());
     }
 
     public void toRecordScreen() {
-        Log.i(TAG, "navigating to Matches screen");
-        mFragmentFrameHelper.replaceFragment(RecordFragment.newInstance()); //MatchesFragment.newInstance());
+        Log.i(TAG, "navigating to Record screen");
+        mFragmentFrameHelper.replaceFragment(RecordFragment.newInstance());
     }
 
     public void toSettingsScreen() {
-        mFragmentFrameHelper.replaceFragment(new SettingsFragment()); //ProfileFragment.newInstance());
+        Log.i(TAG, "navigating to Settings screen");
+        mFragmentFrameHelper.replaceFragment(new SettingsFragment());
     }
 
 
     public void toLoginScreen() {
-        mFragmentFrameHelper.replaceFragmentAndClearBackstack(LoginFragment.newInstance()); //LoginFragment.newInstance());
+        mFragmentFrameHelper.replaceFragmentAndClearBackstack(LoginFragment.newInstance());
     }
 
     public void navigateUp() {

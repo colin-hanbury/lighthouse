@@ -1,5 +1,7 @@
 package screens.map;
 
+import com.google.android.gms.maps.MapView;
+
 import screens.common.view.IBaseObservableView;
 
 import static screens.map.IMapsView.*;
@@ -13,4 +15,6 @@ public interface IMapsView extends IBaseObservableView<Listener> {
     void showProgressIndication();
 
     void hideProgressIndication();
+
+    MapView getMapView();
 }

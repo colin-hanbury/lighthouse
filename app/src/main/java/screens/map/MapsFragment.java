@@ -8,45 +8,36 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
-import hanbury.colin.networking.R;
 import screens.common.controllers.BaseFragment;
 
 public class MapsFragment extends BaseFragment implements IMapsView.Listener {
 
-    private OnMapReadyCallback callback = new OnMapReadyCallback() {
+    public static MapsFragment newInstance(){
 
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
-         */
-        @Override
-        public void onMapReady(GoogleMap googleMap) {
-            LatLng sydney = new LatLng(-34, 151);
-            googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        }
-    };
-
-    public static MapsFragment newInstance(){ //String questionId) {
-        //Bundle args = new Bundle();
-        //args.putString(ARG_QUESTION_ID, questionId);
         MapsFragment fragment = new MapsFragment();
-        //fragment.setArguments(args);
         return fragment;
     }
     private IMapsView mIMapsView;
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mIMapsView.registerListener(this);
+        mIMapsView.getMapView().onStart();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mIMapsView.getMapView().onResume();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mIMapsView.unregisterListener(this);
+        mIMapsView.getMapView().onStop();
+    }
 
     @Nullable
     @Override
@@ -54,18 +45,35 @@ public class MapsFragment extends BaseFragment implements IMapsView.Listener {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         mIMapsView = getCompositionRoot().getLightHouseViewFactory().getMapView(container);
+        mIMapsView.getMapView().onCreate(savedInstanceState);
         return mIMapsView.getRootView();
     }
 
-//    @Override
-//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//        SupportMapFragment mapFragment =
-//                (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
-//        if (mapFragment != null) {
-//            mapFragment.getMapAsync(callback);
-//        }
-//    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mIMapsView.getMapView().onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mIMapsView.getMapView().onDestroy();
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mIMapsView.getMapView().onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mIMapsView.getMapView().onLowMemory();
+    }
+
 
     @Override
     public void onBackClicked() {
@@ -75,4 +83,5 @@ public class MapsFragment extends BaseFragment implements IMapsView.Listener {
     public void onLogoutClicked() {
 
     }
+
 }

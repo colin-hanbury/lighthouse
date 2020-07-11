@@ -12,18 +12,38 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar_widget">
 
-        <SurfaceView
-            android:id="@+id/recordSurfaceView"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colourWhite"/>
+            android:layout_height="match_parent">
 
-        <ProgressBar
-            android:id="@+id/recordProgressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:visibility="invisible"/>
+            <screens.record.AutoFitTextureView
+                android:id="@+id/recordTextureView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible"/>
+
+            <VideoView
+                android:id="@+id/recordVideoView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/recordButton"
+                android:src="@drawable/ic_start_recording_icon"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true" />
+
+            <ProgressBar
+                android:id="@+id/recordProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="invisible"/>
+
+        </RelativeLayout>
 
     </FrameLayout>
 

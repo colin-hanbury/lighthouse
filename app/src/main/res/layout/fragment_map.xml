@@ -5,38 +5,29 @@ android:layout_height="match_parent"
 android:background="@color/colourWhite"
 android:id="@+id/map">
 
-<include layout="@layout/widget_toolbar"/>
+    <include layout="@layout/widget_toolbar"/>
 
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_below="@+id/toolbar_widget">
-
-    <com.google.android.gms.maps.MapView
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/map_view"/>
+        android:layout_below="@+id/toolbar_widget">
 
-    <ProgressBar
-        android:id="@+id/mapProgress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="gone"/>
+        <com.google.android.gms.maps.MapView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/map_view"/>
 
-</FrameLayout>
+        <ProgressBar
+            android:id="@+id/mapProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
+    </FrameLayout>
 
 </RelativeLayout>
-<!--
-<?xml version="1.0" encoding="utf-8"?>
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:id="@+id/map"
-android:name="com.google.android.gms.maps.SupportMapFragment"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context="screens.map.MapsFragmentt" />
--->
+
 
 
 
