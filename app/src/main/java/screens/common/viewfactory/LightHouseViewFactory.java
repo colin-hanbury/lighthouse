@@ -14,6 +14,8 @@ import screens.record.IRecordView;
 import screens.record.RecordView;
 import screens.settings.ISettingsView;
 import screens.settings.SettingsView;
+import screens.settings.settingsitem.ISettingsItemView;
+import screens.settings.settingsitem.SettingsItemView;
 
 
 public class LightHouseViewFactory {
@@ -33,12 +35,14 @@ public class LightHouseViewFactory {
     public ISettingsView getSettingsView(@Nullable ViewGroup parent) {
         return new SettingsView(layoutInflater, parent, this);
     }
+    public ISettingsItemView getSettingsItemView(ViewGroup parent) {
+        return new SettingsItemView(layoutInflater, parent);
+    }
     public ToolbarView getToolbarView(@Nullable ViewGroup parent) {
         return new ToolbarView(layoutInflater, parent);
     }
     public IBottomNavigationBar getBottomNavBar(@Nullable ViewGroup parent) {
         return new BottomNavigationBar(layoutInflater, parent);
     }
-
 
 }

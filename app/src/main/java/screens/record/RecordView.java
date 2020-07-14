@@ -1,9 +1,6 @@
 package screens.record;
 
-import android.graphics.Canvas;
-import android.graphics.ColorFilter;
 import android.graphics.SurfaceTexture;
-import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.TextureView;
@@ -13,8 +10,6 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.VideoView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 
 import hanbury.colin.networking.R;
@@ -40,10 +35,10 @@ public class RecordView extends BaseObservableView<IRecordView.Listener> impleme
     public RecordView(LayoutInflater inflater, ViewGroup parent,
                       LightHouseViewFactory lightHouseViewFactory)  {
         setRootView(inflater.inflate(R.layout.fragment_record, parent, false));
-        mProgressBar = findViewById(R.id.recordProgressBar);
-        mTextureView = findViewById(R.id.recordTextureView);
-        mVideoView = findViewById(R.id.recordVideoView);
-        mRecordButton = findViewById(R.id.recordButton);
+        mProgressBar = findViewById(R.id.record_progressBar);
+        mTextureView = findViewById(R.id.record_texture_view);
+        mVideoView = findViewById(R.id.record_video_view);
+        mRecordButton = findViewById(R.id.record_button);
         mToolbar = findViewById(R.id.toolbar_widget);
         mToolbarView = lightHouseViewFactory.getToolbarView(mToolbar);
         initToolbar();
@@ -115,6 +110,7 @@ public class RecordView extends BaseObservableView<IRecordView.Listener> impleme
     public void hideProgressIndication() {
         mProgressBar.setVisibility(View.GONE);
     }
+
     @Override
     public void notifyRecordingStateChanged(boolean isRecording) {
         //if recording when clicked then show play icon

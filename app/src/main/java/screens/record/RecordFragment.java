@@ -69,10 +69,6 @@ public class RecordFragment extends BaseFragment implements IRecordView.Listener
     private Integer mSensorOrientation;
     private boolean mIsRecordingVideo;
     private static final String VIDEO_DIRECTORY_NAME = "LightHouse";
-    private static final int REQUEST_USE_CAMERA_CODE = 100;
-    private static final int REQUEST_RECORD_AUDIO_CODE = 101;
-    private static final int REQUEST_READ_EXTERNAL_STORAGE_CODE = 102;
-    private static final int REQUEST_WRITE_EXTERNAL_STORAGE_CODE = 103;
     private static final int SENSOR_ORIENTATION_INVERSE_DEGREES = 270;
     private static final int SENSOR_ORIENTATION_DEFAULT_DEGREES = 90;
     private static final SparseIntArray INVERSE_ORIENTATIONS = new SparseIntArray();
@@ -439,12 +435,19 @@ public class RecordFragment extends BaseFragment implements IRecordView.Listener
         try {
             mPreviewSession.stopRepeating();
             mPreviewSession.abortCaptures();
-        } catch (CameraAccessException e) {
+        }
+        catch (CameraAccessException e) {
             e.printStackTrace();
         }
         // Stop recording
         mMediaRecorder.stop();
         mMediaRecorder.reset();
+        // Start preview
+        try {
+            openCamera(mTextureView.getWidth(), mTextureView.getHeight());
+        } catch (CameraAccessException e) {
+            e.printStackTrace();
+        }
         mIRecordView.hideProgressIndication();
         mIRecordView.notifyRecordingStateChanged(false);
     }

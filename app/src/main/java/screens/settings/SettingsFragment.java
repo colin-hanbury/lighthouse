@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import data.settings.SettingsItem;
 import screens.common.controllers.BaseFragment;
 
 public class SettingsFragment extends BaseFragment implements ISettingsView.Listener{
@@ -49,6 +50,13 @@ public class SettingsFragment extends BaseFragment implements ISettingsView.List
         mISettingsView.unregisterListener(this);
     }
 
+
+    @Override
+    public void onSettingItemClicked(SettingsItem settingsItem) {
+        mISettingsView.showProgressIndication();
+        mISettingsView.hideProgressIndication();
+        //mScreensNavigator.to
+    }
 
     @Override
     public void onBackClicked() {

@@ -34,7 +34,7 @@ public class MapsView extends BaseObservableView<IMapsView.Listener> implements 
     public MapsView(LayoutInflater inflater, ViewGroup parent, LightHouseViewFactory lightHouseViewFactory) {
 
         setRootView(inflater.inflate(R.layout.fragment_map, parent, false));
-        mProgressBar = findViewById(R.id.mapProgress);
+        mProgressBar = findViewById(R.id.map_progress);
         mMapView = findViewById(R.id.map_view);
         if (mMapView != null) {
             mMapView.getMapAsync(this);

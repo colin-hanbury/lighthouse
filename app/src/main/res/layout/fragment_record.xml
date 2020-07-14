@@ -17,13 +17,13 @@
             android:layout_height="match_parent">
 
             <screens.record.AutoFitTextureView
-                android:id="@+id/recordTextureView"
+                android:id="@+id/record_texture_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="visible"/>
 
             <VideoView
-                android:id="@+id/recordVideoView"
+                android:id="@+id/record_video_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="gone" />
@@ -31,13 +31,13 @@
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/recordButton"
+                android:id="@+id/record_button"
                 android:src="@drawable/ic_start_recording_icon"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentBottom="true" />
 
             <ProgressBar
-                android:id="@+id/recordProgressBar"
+                android:id="@+id/record_progressBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
