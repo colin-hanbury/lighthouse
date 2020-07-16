@@ -36,7 +36,7 @@ public class SettingsItemView extends BaseObservableView<ISettingsItemView.Liste
     @Override
     public void bindSettingItem(SettingsItem item) {
         mSettingItem = item;
-        mIcon.setImageIcon(mSettingItem.getIcon());
+        mIcon.setImageResource(mSettingItem.getIconID());
         mTitle.setText(mSettingItem.getTitle());
     }
 }

@@ -1,5 +1,6 @@
 package screens.settings;
 
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Icon;
 import android.util.Log;
 import android.view.ViewGroup;
@@ -42,12 +43,13 @@ public class SettingsRecyclerAdapter extends
 
     private void populateList(){
         Log.i(TAG, "populating items");
-        mItemList.add(new SettingsItem(Icon.createWithResource("ic_start_recording_icon",
-                R.drawable.ic_start_recording_icon),"Account"));
-        mItemList.add(new SettingsItem(Icon.createWithResource("ic_start_recording_icon",
-                R.drawable.ic_start_recording_icon),"View Recordings"));
-        mItemList.add(new SettingsItem(Icon.createWithResource("ic_start_recording_icon",
-                R.drawable.ic_start_recording_icon),"Saved Recordings"));
+        mItemList.add(new SettingsItem(R.drawable.ic_account_light,"Account"));
+        mItemList.add(new SettingsItem(R.drawable.ic_cloud_light,"Recent Recordings"));
+        mItemList.add(new SettingsItem(R.drawable.ic_saved_light,"Saved Recordings"));
+        mItemList.add(new SettingsItem(R.drawable.ic_notifications_light,"Notifications"));
+        mItemList.add(new SettingsItem(R.drawable.ic_contact_light,"Contact Us"));
+        mItemList.add(new SettingsItem(R.drawable.ic_terms_light,"Terms of Use"));
+        mItemList.add(new SettingsItem(R.drawable.ic_privacy_light,"Privacy Policy"));
         notifyDataSetChanged();
     }
 

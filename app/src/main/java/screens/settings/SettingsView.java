@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import data.settings.SettingsItem;
@@ -28,11 +29,11 @@ public class SettingsView extends BaseObservableView<ISettingsView.Listener>
         setRootView(inflater.inflate(R.layout.fragment_settings, parent, false));
         mProgressBar = findViewById(R.id.settings_progress);
         mRecyclerView = findViewById(R.id.settings_recycler);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         mAdapter = new SettingsRecyclerAdapter(this,lightHouseViewFactory);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
         mToolbar = findViewById(R.id.toolbar_widget);
-
         mToolbarView = lightHouseViewFactory.getToolbarView(mToolbar);
 
         initToolbar();
