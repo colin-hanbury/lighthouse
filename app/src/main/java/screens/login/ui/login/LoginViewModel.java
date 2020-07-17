@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel;
 
 import android.util.Patterns;
 
-import hanbury.colin.networking.R;
+import hanbury.colin.lighthouse.R;
 import screens.login.data.LoginRepository;
 import screens.login.data.Result;
 import screens.login.data.model.LoggedInUser;

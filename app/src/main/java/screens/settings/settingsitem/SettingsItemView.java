@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import data.settings.SettingsItem;
-import hanbury.colin.networking.R;
+import hanbury.colin.lighthouse.R;
 import screens.common.view.BaseObservableView;
 
 public class SettingsItemView extends BaseObservableView<ISettingsItemView.Listener>

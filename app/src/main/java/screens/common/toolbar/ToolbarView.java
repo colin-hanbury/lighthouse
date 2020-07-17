@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import hanbury.colin.networking.R;
+import hanbury.colin.lighthouse.R;
 import screens.common.view.BaseView;
 
 public class ToolbarView extends BaseView {

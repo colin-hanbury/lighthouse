@@ -14,6 +14,8 @@ import screens.record.IRecordView;
 import screens.record.RecordView;
 import screens.settings.ISettingsView;
 import screens.settings.SettingsView;
+import screens.settings.account.AccountView;
+import screens.settings.account.IAccountView;
 import screens.settings.settingsitem.ISettingsItemView;
 import screens.settings.settingsitem.SettingsItemView;
 
@@ -45,4 +47,7 @@ public class LightHouseViewFactory {
         return new BottomNavigationBar(layoutInflater, parent);
     }
 
+    public IAccountView getAccountView(ViewGroup parent) {
+        return new AccountView(layoutInflater, parent, this);
+    }
 }

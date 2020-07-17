@@ -10,14 +10,14 @@ import androidx.annotation.Nullable;
 
 import data.settings.SettingsItem;
 import screens.common.controllers.BaseFragment;
+import screens.common.navigation.screennavigation.ScreensNavigator;
 
 public class SettingsFragment extends BaseFragment implements ISettingsView.Listener{
 
-    public static SettingsFragment newInstance(){ //String questionId) {
-        //Bundle args = new Bundle();
-        //args.putString(ARG_QUESTION_ID, questionId);
+    private ScreensNavigator mScreensNavigator;
+
+    public static SettingsFragment newInstance(){
         SettingsFragment fragment = new SettingsFragment();
-        //fragment.setArguments(args);
         return fragment;
     }
 
@@ -33,8 +33,8 @@ public class SettingsFragment extends BaseFragment implements ISettingsView.List
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         mISettingsView = getCompositionRoot().getLightHouseViewFactory().getSettingsView(container);
+        mScreensNavigator = getCompositionRoot().getScreensNavigator();
         return mISettingsView.getRootView();
     }
 
@@ -54,8 +54,9 @@ public class SettingsFragment extends BaseFragment implements ISettingsView.List
     @Override
     public void onSettingItemClicked(SettingsItem settingsItem) {
         mISettingsView.showProgressIndication();
+        mScreensNavigator.toSettingsItemScreen(settingsItem);
         mISettingsView.hideProgressIndication();
-        //mScreensNavigator.to
+
     }
 
     @Override

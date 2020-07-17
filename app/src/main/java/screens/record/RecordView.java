@@ -12,13 +12,13 @@ import android.widget.VideoView;
 
 import androidx.appcompat.widget.Toolbar;
 
-import hanbury.colin.networking.R;
+import hanbury.colin.lighthouse.R;
 import screens.common.toolbar.ToolbarView;
 import screens.common.view.BaseObservableView;
 import screens.common.viewfactory.LightHouseViewFactory;
 
-import static hanbury.colin.networking.R.drawable.ic_start_recording_icon;
-import static hanbury.colin.networking.R.drawable.ic_stop_recording_icon;
+import static hanbury.colin.lighthouse.R.drawable.ic_start_recording_icon;
+import static hanbury.colin.lighthouse.R.drawable.ic_stop_recording_icon;
 
 
 public class RecordView extends BaseObservableView<IRecordView.Listener> implements IRecordView,
@@ -112,15 +112,13 @@ public class RecordView extends BaseObservableView<IRecordView.Listener> impleme
     }
 
     @Override
-    public void notifyRecordingStateChanged(boolean isRecording) {
-        //if recording when clicked then show play icon
-        if(isRecording) {
-            mRecordButton.setImageResource(ic_start_recording_icon);
-        }
-        //if not recording when clicked then show stop icon
-        else {
-            mRecordButton.setImageResource(ic_stop_recording_icon);
-        }
+    public void showStartRecordingButton() {
+        mRecordButton.setImageResource(ic_start_recording_icon);
+    }
+
+    @Override
+    public void showStopRecordingButton() {
+        mRecordButton.setImageResource(ic_stop_recording_icon);
     }
 
     @Override

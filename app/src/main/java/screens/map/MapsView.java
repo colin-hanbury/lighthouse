@@ -16,7 +16,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import hanbury.colin.networking.R;
+import hanbury.colin.lighthouse.R;
 import screens.common.toolbar.ToolbarView;
 import screens.common.view.BaseObservableView;
 import screens.common.viewfactory.LightHouseViewFactory;

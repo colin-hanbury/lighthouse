@@ -8,12 +8,11 @@ import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.FragmentActivity;
-import androidx.viewpager2.widget.ViewPager2;
+
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import hanbury.colin.networking.R;
+import hanbury.colin.lighthouse.R;
 import screens.common.view.BaseObservableView;
 
 public class BottomNavigationBar extends BaseObservableView<IBottomNavigationBar.Listener>

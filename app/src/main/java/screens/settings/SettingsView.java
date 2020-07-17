@@ -10,13 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import data.settings.SettingsItem;
-import hanbury.colin.networking.R;
+import hanbury.colin.lighthouse.R;
 import screens.common.toolbar.ToolbarView;
 import screens.common.view.BaseObservableView;
 import screens.common.viewfactory.LightHouseViewFactory;
 
-public class SettingsView extends BaseObservableView<ISettingsView.Listener>
-        implements ISettingsView, SettingsRecyclerAdapter.Listener {
+    public class SettingsView extends BaseObservableView<ISettingsView.Listener>
+            implements ISettingsView, SettingsRecyclerAdapter.Listener {
 
     private final ProgressBar mProgressBar;
     private final Toolbar mToolbar;

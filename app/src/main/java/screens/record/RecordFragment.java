@@ -67,7 +67,7 @@ public class RecordFragment extends BaseFragment implements IRecordView.Listener
     private MediaRecorder mMediaRecorder;
     private File mCurrentFile;
     private Integer mSensorOrientation;
-    private boolean mIsRecordingVideo;
+    private boolean mIsRecordingVideo = false;
     private static final String VIDEO_DIRECTORY_NAME = "LightHouse";
     private static final int SENSOR_ORIENTATION_INVERSE_DEGREES = 270;
     private static final int SENSOR_ORIENTATION_DEFAULT_DEGREES = 90;
@@ -140,7 +140,6 @@ public class RecordFragment extends BaseFragment implements IRecordView.Listener
         mIRecordView.showProgressIndication();
         startBackgroundThread();
         mTextureView = (AutoFitTextureView) mIRecordView.getTextureView();
-//        mTextureView.setSurfaceTexture(mIRecordView.getSurfaceTexture());
         if (mTextureView != null) {
             try {
                 openCamera(mTextureView.getWidth(), mTextureView.getHeight());
@@ -155,18 +154,20 @@ public class RecordFragment extends BaseFragment implements IRecordView.Listener
     @Override
     public void onResume() {
         super.onResume();
+        mIRecordView.registerListener(this);
+        mIRecordView.showProgressIndication();
         startBackgroundThread();
     }
     @Override
     public void onPause() {
         closeCamera();
+        mIRecordView.unregisterListener(this);
         stopBackgroundThread();
         super.onPause();
     }
 
     @Override
     public void onStop() {
-
         super.onStop();
     }
 
@@ -409,18 +410,20 @@ public class RecordFragment extends BaseFragment implements IRecordView.Listener
                         mIsRecordingVideo = true;
                         // Start recording
                         mMediaRecorder.start();
-                        mIRecordView.notifyRecordingStateChanged(true);
                     });
                 }
                 @Override
                 public void onConfigureFailed(@NonNull CameraCaptureSession cameraCaptureSession) {
                     Log.e(TAG, "onConfigureFailed: Failed");
+                    mIsRecordingVideo = false;
                     mIRecordView.hideProgressIndication();
                 }
             }, mBackgroundHandler);
         } catch (CameraAccessException | IOException e) {
+            mIsRecordingVideo = false;
             e.printStackTrace();
         }
+        mIsRecordingVideo = true;
     }
     private void closePreviewSession() {
         if (mPreviewSession != null) {
@@ -431,12 +434,12 @@ public class RecordFragment extends BaseFragment implements IRecordView.Listener
 
     public void stopRecordingVideo() {
         // UI
-        mIsRecordingVideo = false;
         try {
             mPreviewSession.stopRepeating();
             mPreviewSession.abortCaptures();
         }
         catch (CameraAccessException e) {
+            mIsRecordingVideo = true;
             e.printStackTrace();
         }
         // Stop recording
@@ -449,7 +452,7 @@ public class RecordFragment extends BaseFragment implements IRecordView.Listener
             e.printStackTrace();
         }
         mIRecordView.hideProgressIndication();
-        mIRecordView.notifyRecordingStateChanged(false);
+        mIsRecordingVideo = false;
     }
 
     private static Size chooseVideoSize(Size[] choices) {
@@ -513,12 +516,14 @@ public class RecordFragment extends BaseFragment implements IRecordView.Listener
         if (mIsRecordingVideo) {
             try {
                 stopRecordingVideo();
+                mIRecordView.showStartRecordingButton();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
         else {
             startRecordingVideo();
+            mIRecordView.showStopRecordingButton();
         }
     }
 

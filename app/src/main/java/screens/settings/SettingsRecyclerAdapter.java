@@ -1,7 +1,5 @@
 package screens.settings;
 
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.Icon;
 import android.util.Log;
 import android.view.ViewGroup;
 
@@ -12,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import data.settings.SettingsItem;
-import hanbury.colin.networking.R;
+import hanbury.colin.lighthouse.R;
 import screens.common.viewfactory.LightHouseViewFactory;
 import screens.settings.settingsitem.ISettingsItemView;
 

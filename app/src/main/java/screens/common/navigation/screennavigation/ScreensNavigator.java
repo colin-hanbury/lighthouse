@@ -1,13 +1,16 @@
 package screens.common.navigation.screennavigation;
 
 
+import android.accounts.Account;
 import android.util.Log;
 
+import data.settings.SettingsItem;
 import screens.common.navigation.fragmenthelpers.FragmentFrameHelper;
 import screens.login.ui.login.LoginFragment;
 import screens.map.MapsFragment;
 import screens.record.RecordFragment;
 import screens.settings.SettingsFragment;
+import screens.settings.privacypolicy.PrivacyPolicyFragment;
 
 public class ScreensNavigator {
 
@@ -30,7 +33,7 @@ public class ScreensNavigator {
 
     public void toSettingsScreen() {
         Log.i(TAG, "navigating to Settings screen");
-        mFragmentFrameHelper.replaceFragment(new SettingsFragment());
+        mFragmentFrameHelper.replaceFragmentAndClearBackstack(SettingsFragment.newInstance());
     }
 
 
@@ -42,4 +45,30 @@ public class ScreensNavigator {
         mFragmentFrameHelper.navigateUp();
     }
 
+    public void toSettingsItemScreen(SettingsItem settingsItem) {
+        switch (settingsItem.getTitle()){
+            case "Account":
+                Log.i(TAG, "navigating to Map screen");
+                mFragmentFrameHelper.replaceFragment(MapsFragment.newInstance());
+                break;
+            case "Recent Recordings":
+                mFragmentFrameHelper.replaceFragment(SettingsFragment.newInstance());
+                break;
+            case "Saved Recordings":
+                mFragmentFrameHelper.replaceFragment(SettingsFragment.newInstance());
+                break;
+            case "Notifications":
+                mFragmentFrameHelper.replaceFragment(SettingsFragment.newInstance());
+                break;
+            case "Contact Us":
+                mFragmentFrameHelper.replaceFragment(SettingsFragment.newInstance());
+                break;
+            case "Terms of Use":
+                mFragmentFrameHelper.replaceFragment(SettingsFragment.newInstance());
+                break;
+            case "Privacy Policy":
+                mFragmentFrameHelper.replaceFragment(PrivacyPolicyFragment.newInstance());
+                break;
+        }
+    }
 }

@@ -30,5 +30,7 @@ public interface IRecordView extends IBaseObservableView<Listener> {
 
     void hideProgressIndication();
 
-    void notifyRecordingStateChanged(boolean recordingState);
+    void showStartRecordingButton();
+
+    void showStopRecordingButton();
 }

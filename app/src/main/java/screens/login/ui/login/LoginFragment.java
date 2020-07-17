@@ -21,7 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import hanbury.colin.networking.R;
+import hanbury.colin.lighthouse.R;
 
 
 public class LoginFragment extends Fragment {
