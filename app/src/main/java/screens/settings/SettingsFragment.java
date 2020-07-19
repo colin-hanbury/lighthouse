@@ -46,8 +46,8 @@ public class SettingsFragment extends BaseFragment implements ISettingsView.List
 
     @Override
     public void onStop() {
-        super.onStop();
         mISettingsView.unregisterListener(this);
+        super.onStop();
     }
 
 
@@ -61,7 +61,7 @@ public class SettingsFragment extends BaseFragment implements ISettingsView.List
 
     @Override
     public void onBackClicked() {
-//        mNavigator.navigateBack();
+        mScreensNavigator.navigateBack();
     }
 
     @Override

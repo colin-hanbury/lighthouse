@@ -24,6 +24,7 @@
             android:layout_marginStart="0dp"
             android:layout_marginEnd="0dp"
             android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimaryDark"
             app:itemBackground="@color/colorPrimaryDark"
             app:itemIconTint="@color/colourWhite"
             app:itemTextColor="@color/colourWhite"

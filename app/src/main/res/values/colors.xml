@@ -4,7 +4,11 @@
     <color name="colorPrimaryDark">#2B2B2B</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="colourWhite">#FFFFFF</color>
+    <color name="colourPrimaryLight">#626262</color>
     <color name="colorSexyRed">#ff0006</color>
     <color name="colorDarkRed">#cc0005</color>
     <color name="colourTransparent">#00000000</color>
+    <color name="colourPrimaryButton">#A9A9A9</color>
+    <color name="colourButtonOutline">#B1BCBE</color>
+    <color name="colourBlack">#000000</color>
 </resources>

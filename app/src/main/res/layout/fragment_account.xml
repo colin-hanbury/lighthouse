@@ -1,52 +1,229 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="screens.settings.account.AccountFragment">
+    android:background="@color/colorPrimary">
 
     <include layout="@layout/widget_toolbar"/>
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/account_scroll_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_below="@+id/toolbar_widget">
 
-        <TextView
-            android:id="@+id/account_type_text"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/account_upgrade_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:id="@+id/account_type_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:background="@drawable/rounded_box_background"
+                android:layout_alignParentTop="true"
+                android:layout_margin="20dp">
 
-        <EditText
-            android:id="@+id/account_change_password_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/account_owner_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textColor="@color/colourWhite"
+                    android:textSize="18dp"
+                    android:text="@string/account_owner_title"/>
 
-        <EditText
-            android:id="@+id/account_confirm_change_password_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/account_owner_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_toRightOf="@+id/account_owner_title"
+                    android:textSize="18dp"
+                    android:textColor="@color/colourWhite"/>
 
-        <Button
-            android:id="@+id/change_password_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/change_password"/>
+                <TextView
+                    android:id="@+id/account_type_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/account_owner_title"
+                    android:padding="5dp"
+                    android:textColor="@color/colourWhite"
+                    android:textSize="18dp"
+                    android:text="@string/account_type_title"/>
 
-        <Button
-            android:id="@+id/set_two_factor_auth_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/account_type_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/account_owner_text"
+                    android:padding="5dp"
+                    android:layout_toRightOf="@+id/account_type_title"
+                    android:textSize="18dp"
+                    android:textColor="@color/colourWhite"/>
 
-        <Button
-            android:id="@+id/set_backup_email_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
+                <Button
+                    android:id="@+id/account_upgrade_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_button_background"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:layout_below="@+id/account_type_title"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/colourWhite"
+                    android:text="@string/upgrade_account"/>
+            </RelativeLayout>
 
 
-</FrameLayout>
+            <RelativeLayout
+                android:id="@+id/password_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_box_background"
+                android:padding="5dp"
+                android:layout_below="@id/account_type_layout"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp">
+
+                <EditText
+                    android:id="@+id/current_password_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_margin="10dp"
+                    android:textColorHint="@color/colourPrimaryLight"
+                    android:hint="@string/current_password"
+                    android:background="@color/colourWhite"/>
+
+                <EditText
+                    android:id="@+id/new_password_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_margin="10dp"
+                    android:layout_below="@+id/current_password_input"
+                    android:textColorHint="@color/colourPrimaryLight"
+                    android:hint="@string/new_password"
+                    android:background="@color/colourWhite"/>
+
+                <EditText
+                    android:id="@+id/confirm_new_password_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_margin="10dp"
+                    android:layout_below="@+id/new_password_input"
+                    android:textColorHint="@color/colourPrimaryLight"
+                    android:hint="@string/confirm_password"
+                    android:background="@color/colourWhite"/>
+
+                <Button
+                    android:id="@+id/change_password_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_button_background"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/confirm_new_password_input"
+                    android:textColor="@color/colourWhite"
+                    android:text="@string/change_password"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/backup_email_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_box_background"
+                android:padding="5dp"
+                android:layout_below="@+id/password_layout"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp">
+
+                <EditText
+                    android:id="@+id/set_backup_email_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:layout_margin="10dp"
+                    android:textColorHint="@color/colourPrimaryLight"
+                    android:hint="@string/back_up_email_placeholder"
+                    android:background="@color/colourWhite"/>
+
+                <Button
+                    android:id="@+id/set_backup_email_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_button_background"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/set_backup_email_input"
+                    android:textColor="@color/colourWhite"
+                    android:text="@string/set_back_up_email"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/two_factor_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_box_background"
+                android:padding="5dp"
+                android:layout_below="@+id/backup_email_layout"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:id="@+id/two_factor_auth_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textColor="@color/colourWhite"
+                    android:textSize="18dp"
+                    android:text="@string/add_two_factor_auth"/>
+
+                <Button
+                    android:id="@+id/set_two_factor_auth_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_button_background"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/two_factor_auth_text"
+                    android:textColor="@color/colourWhite"
+                    android:text="@string/add_two_factor_authentication"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/delete_account_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/two_factor_layout"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp">
+
+                <Button
+                    android:id="@+id/delete_account_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:layout_margin="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:backgroundTint="@color/colorSexyRed"
+                    android:background="@drawable/rounded_button_background"
+                    android:textColor="@color/colourWhite"
+                    android:text="@string/delete_account"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

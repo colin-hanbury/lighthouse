@@ -46,13 +46,13 @@ import java.util.Locale;
 import java.util.concurrent.Semaphore;
 
 import screens.common.controllers.BaseFragment;
-
+import screens.common.navigation.screennavigation.ScreensNavigator;
 
 
 public class RecordFragment extends BaseFragment implements IRecordView.Listener{
 
 
-
+    private ScreensNavigator mScreensNavigator;
     private HandlerThread mBackgroundThread;
     private Semaphore mCameraOpenCloseLock = new Semaphore(1);
     private Handler mBackgroundHandler;
@@ -130,6 +130,7 @@ public class RecordFragment extends BaseFragment implements IRecordView.Listener
                              @Nullable Bundle savedInstanceState) {
 
         mIRecordView = getCompositionRoot().getLightHouseViewFactory().getRecordView(container);
+        mScreensNavigator = getCompositionRoot().getScreensNavigator();
         return mIRecordView.getRootView();
     }
 
@@ -502,7 +503,7 @@ public class RecordFragment extends BaseFragment implements IRecordView.Listener
 
     @Override
     public void onBackClicked() {
-        //back
+        mScreensNavigator.navigateBack();
     }
 
     @Override

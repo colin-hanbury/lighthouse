@@ -1,10 +1,8 @@
-package screens.settings.account;
+package screens.settings.notifications;
 
-import data.settings.SettingsItem;
 import screens.common.view.IBaseObservableView;
 
-public interface IAccountView extends IBaseObservableView<IAccountView.Listener> {
-
+public interface INotificationsView extends IBaseObservableView<INotificationsView.Listener> {
     interface Listener {
         void onBackClicked();
         void onLogoutClicked();

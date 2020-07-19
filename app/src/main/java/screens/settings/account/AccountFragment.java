@@ -8,9 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import hanbury.colin.lighthouse.R;
 import screens.common.controllers.BaseFragment;
-import screens.settings.ISettingsView;
+import screens.common.navigation.screennavigation.ScreensNavigator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,11 +20,7 @@ public class AccountFragment extends BaseFragment implements IAccountView.Listen
 
 
     private IAccountView mIAccountView;
-
-    public AccountFragment() {
-        // Required empty public constructor
-    }
-
+    private ScreensNavigator mScreensNavigator;
 
     public static AccountFragment newInstance() {
         AccountFragment fragment = new AccountFragment();
@@ -33,16 +28,32 @@ public class AccountFragment extends BaseFragment implements IAccountView.Listen
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onStart() {
+        super.onStart();
+        mIAccountView.registerListener(this);
+    }
 
+    @Override
+    public void onStop() {
+        mIAccountView.unregisterListener(this);
+        super.onStop();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mIAccountView = getCompositionRoot().getLightHouseViewFactory().getAccountView(container);
-//        mScreensNavigator = getCompositionRoot().getScreensNavigator();
+        mScreensNavigator = getCompositionRoot().getScreensNavigator();
         return mIAccountView.getRootView();
+    }
+
+    @Override
+    public void onBackClicked() {
+        mScreensNavigator.navigateBack();
+    }
+
+    @Override
+    public void onLogoutClicked() {
+//        call logout
     }
 }

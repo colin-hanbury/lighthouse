@@ -9,8 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import screens.common.controllers.BaseFragment;
+import screens.common.navigation.screennavigation.ScreensNavigator;
 
 public class MapsFragment extends BaseFragment implements IMapsView.Listener {
+
+    private ScreensNavigator mScreensNavigator;
 
     public static MapsFragment newInstance(){
 
@@ -46,6 +49,7 @@ public class MapsFragment extends BaseFragment implements IMapsView.Listener {
                              @Nullable Bundle savedInstanceState) {
         mIMapsView = getCompositionRoot().getLightHouseViewFactory().getMapView(container);
         mIMapsView.getMapView().onCreate(savedInstanceState);
+        mScreensNavigator = getCompositionRoot().getScreensNavigator();
         return mIMapsView.getRootView();
     }
 
@@ -77,6 +81,8 @@ public class MapsFragment extends BaseFragment implements IMapsView.Listener {
 
     @Override
     public void onBackClicked() {
+        mScreensNavigator.navigateBack();
+
     }
 
     @Override

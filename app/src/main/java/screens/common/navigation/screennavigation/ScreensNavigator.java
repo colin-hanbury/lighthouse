@@ -10,6 +10,7 @@ import screens.login.ui.login.LoginFragment;
 import screens.map.MapsFragment;
 import screens.record.RecordFragment;
 import screens.settings.SettingsFragment;
+import screens.settings.account.AccountFragment;
 import screens.settings.privacypolicy.PrivacyPolicyFragment;
 
 public class ScreensNavigator {
@@ -28,7 +29,7 @@ public class ScreensNavigator {
 
     public void toRecordScreen() {
         Log.i(TAG, "navigating to Record screen");
-        mFragmentFrameHelper.replaceFragment(RecordFragment.newInstance());
+        mFragmentFrameHelper.replaceFragmentAndClearBackstack(RecordFragment.newInstance());
     }
 
     public void toSettingsScreen() {
@@ -36,20 +37,24 @@ public class ScreensNavigator {
         mFragmentFrameHelper.replaceFragmentAndClearBackstack(SettingsFragment.newInstance());
     }
 
-
-    public void toLoginScreen() {
-        mFragmentFrameHelper.replaceFragmentAndClearBackstack(LoginFragment.newInstance());
+    public void toAccountScreen() {
+        Log.i(TAG, "navigating to Account screen");
+        mFragmentFrameHelper.replaceFragment(AccountFragment.newInstance());
     }
 
-    public void navigateUp() {
+
+    public void toLoginScreen() {
+        mFragmentFrameHelper.replaceFragment(LoginFragment.newInstance());
+    }
+
+    public void navigateBack() {
         mFragmentFrameHelper.navigateUp();
     }
 
     public void toSettingsItemScreen(SettingsItem settingsItem) {
         switch (settingsItem.getTitle()){
             case "Account":
-                Log.i(TAG, "navigating to Map screen");
-                mFragmentFrameHelper.replaceFragment(MapsFragment.newInstance());
+                toAccountScreen();
                 break;
             case "Recent Recordings":
                 mFragmentFrameHelper.replaceFragment(SettingsFragment.newInstance());
