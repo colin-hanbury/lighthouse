@@ -16,13 +16,13 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/privacy_policy_text"
+                android:id="@+id/terms_of_use_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:layout_margin="10dp"
                 android:textColor="@color/colourWhite"
-                android:text="@string/privacy_policy" />
+                android:text="@string/terms_of_use" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

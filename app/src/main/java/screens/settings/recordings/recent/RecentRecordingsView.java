@@ -1,10 +1,7 @@
-package screens.settings.notifications;
+package screens.settings.recordings.recent;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.Switch;
-import android.widget.TextView;
-
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -13,47 +10,38 @@ import screens.common.toolbar.ToolbarView;
 import screens.common.view.BaseObservableView;
 import screens.common.viewfactory.LightHouseViewFactory;
 
-public class NotificationsView extends BaseObservableView<INotificationsView.Listener>
-        implements INotificationsView{
+public class RecentRecordingsView extends BaseObservableView<IRecentRecordingsView.Listener>
+        implements IRecentRecordingsView {
 
-    private final TextView mNearbyPolicTextView;
-    private final TextView mPaymentDueTextView;
-    private final Switch mNearbyPoliceSwitch;
-    private final Switch mPaymentDueSwitch;
     private final Toolbar mToolbar;
     private final ToolbarView mToolbarView;
 
-
-    public NotificationsView(LayoutInflater inflater, ViewGroup parent,
-                             LightHouseViewFactory lightHouseViewFactory){
-        setRootView(inflater.inflate(R.layout.fragment_notifications, parent, false));
-        mNearbyPolicTextView = findViewById(R.id.notify_police_nearby_text);
-        mPaymentDueTextView = findViewById(R.id.notify_payment_due_text);
-        mNearbyPoliceSwitch = findViewById(R.id.notify_police_nearby_switch);
-        mPaymentDueSwitch = findViewById(R.id.notify_payment_due_switch);
+    public RecentRecordingsView(LayoutInflater inflater, ViewGroup parent,
+                                LightHouseViewFactory lightHouseViewFactory){
+        setRootView(inflater.inflate(R.layout.fragment_recent_recordings, parent, false));
         mToolbar = findViewById(R.id.toolbar_widget);
         mToolbarView = lightHouseViewFactory.getToolbarView(parent);
         initToolbar();
     }
 
-
     private void initToolbar() {
         mToolbar.addView(mToolbarView.getRootView());
 
-        mToolbarView.setTitle(getString(R.string.title_notifications));
+        mToolbarView.setTitle(getString(R.string.title_saved_recordings));
 
         mToolbarView.enableBackButtonAndListen(new ToolbarView.BackClickListener() {
             @Override
             public void onBackClicked() {
-                for (Listener listener : getListeners()) {
+                for (Listener listener: getListeners()){
                     listener.onBackClicked();
                 }
             }
         });
+
         mToolbarView.enableLogoutButtonAndListen(new ToolbarView.LogoutClickListener() {
             @Override
             public void onLogoutClicked() {
-                for (Listener listener : getListeners()) {
+                for (Listener listener: getListeners()){
                     listener.onLogoutClicked();
                 }
             }

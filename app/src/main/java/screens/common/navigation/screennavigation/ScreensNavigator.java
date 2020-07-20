@@ -1,7 +1,6 @@
 package screens.common.navigation.screennavigation;
 
 
-import android.accounts.Account;
 import android.util.Log;
 
 import data.settings.SettingsItem;
@@ -11,7 +10,10 @@ import screens.map.MapsFragment;
 import screens.record.RecordFragment;
 import screens.settings.SettingsFragment;
 import screens.settings.account.AccountFragment;
+import screens.settings.contactus.ContactUsFragment;
+import screens.settings.notifications.NotificationsFragment;
 import screens.settings.privacypolicy.PrivacyPolicyFragment;
+import screens.settings.termsofuse.TermsOfUseFragment;
 
 public class ScreensNavigator {
 
@@ -22,7 +24,7 @@ public class ScreensNavigator {
         mFragmentFrameHelper = fragmentFrameHelper;
     }
 
-    public void toMapsScreen(){ //String questionId) {
+    public void toMapsScreen() {
         Log.i(TAG, "navigating to Map screen");
         mFragmentFrameHelper.replaceFragmentAndClearBackstack(MapsFragment.newInstance());
     }
@@ -42,6 +44,36 @@ public class ScreensNavigator {
         mFragmentFrameHelper.replaceFragment(AccountFragment.newInstance());
     }
 
+    public void toRecentRecordingsScreen() {
+        Log.i(TAG, "navigating to Recent Recordings screen");
+        mFragmentFrameHelper.replaceFragment(RecentRecordingsFragment.newInstance());
+    }
+
+
+    public void toSavedRecordingsScreen() {
+        Log.i(TAG, "navigating to Saved Recordings screen");
+        mFragmentFrameHelper.replaceFragment(SavedRecordingsFragment.newInstance());
+    }
+
+    private void toNotificationsScreen() {
+        Log.i(TAG, "navigating to Notifications screen");
+        mFragmentFrameHelper.replaceFragment(NotificationsFragment.newInstance());
+    }
+
+    private void toContactUsScreen(){
+        Log.i(TAG, "navigating to Contact Us screen");
+        mFragmentFrameHelper.replaceFragment(ContactUsFragment.newInstance());
+    }
+
+    private void toTermsOfUseScreen() {
+        Log.i(TAG, "navigating to Terms of Use screen");
+        mFragmentFrameHelper.replaceFragment(TermsOfUseFragment.newInstance());
+    }
+
+    private void toPrivacyPolicyScreen() {
+        Log.i(TAG, "navigating to Privacy Policy screen");
+        mFragmentFrameHelper.replaceFragment(PrivacyPolicyFragment.newInstance());
+    }
 
     public void toLoginScreen() {
         mFragmentFrameHelper.replaceFragment(LoginFragment.newInstance());
@@ -57,23 +89,24 @@ public class ScreensNavigator {
                 toAccountScreen();
                 break;
             case "Recent Recordings":
-                mFragmentFrameHelper.replaceFragment(SettingsFragment.newInstance());
+                toRecentRecordingsScreen();
                 break;
             case "Saved Recordings":
-                mFragmentFrameHelper.replaceFragment(SettingsFragment.newInstance());
+                toSavedRecordingsScreen();
                 break;
             case "Notifications":
-                mFragmentFrameHelper.replaceFragment(SettingsFragment.newInstance());
+                toNotificationsScreen();
                 break;
             case "Contact Us":
-                mFragmentFrameHelper.replaceFragment(SettingsFragment.newInstance());
+                toContactUsScreen();
                 break;
             case "Terms of Use":
-                mFragmentFrameHelper.replaceFragment(SettingsFragment.newInstance());
+                toTermsOfUseScreen();
                 break;
             case "Privacy Policy":
-                mFragmentFrameHelper.replaceFragment(PrivacyPolicyFragment.newInstance());
+                toPrivacyPolicyScreen();
                 break;
         }
     }
+
 }

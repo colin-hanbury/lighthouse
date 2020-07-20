@@ -1,10 +1,8 @@
-package screens.settings.notifications;
+package screens.settings.contactus;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.Switch;
-import android.widget.TextView;
-
+import android.widget.Button;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -13,34 +11,27 @@ import screens.common.toolbar.ToolbarView;
 import screens.common.view.BaseObservableView;
 import screens.common.viewfactory.LightHouseViewFactory;
 
-public class NotificationsView extends BaseObservableView<INotificationsView.Listener>
-        implements INotificationsView{
+public class ContactUsView extends BaseObservableView<IContactUsView.Listener>
+        implements IContactUsView {
 
-    private final TextView mNearbyPolicTextView;
-    private final TextView mPaymentDueTextView;
-    private final Switch mNearbyPoliceSwitch;
-    private final Switch mPaymentDueSwitch;
     private final Toolbar mToolbar;
     private final ToolbarView mToolbarView;
+    private final Button mSendFeedbackButton;
 
+    public ContactUsView(LayoutInflater inflater, ViewGroup parent,
+                         LightHouseViewFactory lightHouseViewFactory){
+        setRootView(inflater.inflate(R.layout.fragment_contact_us, parent, false));
 
-    public NotificationsView(LayoutInflater inflater, ViewGroup parent,
-                             LightHouseViewFactory lightHouseViewFactory){
-        setRootView(inflater.inflate(R.layout.fragment_notifications, parent, false));
-        mNearbyPolicTextView = findViewById(R.id.notify_police_nearby_text);
-        mPaymentDueTextView = findViewById(R.id.notify_payment_due_text);
-        mNearbyPoliceSwitch = findViewById(R.id.notify_police_nearby_switch);
-        mPaymentDueSwitch = findViewById(R.id.notify_payment_due_switch);
+        mSendFeedbackButton = findViewById(R.id.contact_feedback_button);
         mToolbar = findViewById(R.id.toolbar_widget);
         mToolbarView = lightHouseViewFactory.getToolbarView(parent);
         initToolbar();
     }
 
-
     private void initToolbar() {
         mToolbar.addView(mToolbarView.getRootView());
 
-        mToolbarView.setTitle(getString(R.string.title_notifications));
+        mToolbarView.setTitle(getString(R.string.title_contact_us));
 
         mToolbarView.enableBackButtonAndListen(new ToolbarView.BackClickListener() {
             @Override

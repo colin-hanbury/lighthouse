@@ -1,8 +1,8 @@
-package screens.settings.privacypolicy;
+package screens.settings.recordings.saved;
 
 import screens.common.view.IBaseObservableView;
 
-public interface IPrivacyPolicyView extends IBaseObservableView<IPrivacyPolicyView.Listener> {
+public interface ISavedRecordingsView extends IBaseObservableView<ISavedRecordingsView.Listener> {
 
     interface Listener {
         void onBackClicked();
@@ -11,5 +11,5 @@ public interface IPrivacyPolicyView extends IBaseObservableView<IPrivacyPolicyVi
 
     void showProgressIndication();
 
-    void  hideProgressIndication();
+    void hideProgressIndication();
 }

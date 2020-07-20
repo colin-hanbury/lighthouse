@@ -16,8 +16,20 @@ import screens.settings.ISettingsView;
 import screens.settings.SettingsView;
 import screens.settings.account.AccountView;
 import screens.settings.account.IAccountView;
+import screens.settings.contactus.ContactUsView;
+import screens.settings.contactus.IContactUsView;
+import screens.settings.notifications.INotificationsView;
+import screens.settings.notifications.NotificationsView;
+import screens.settings.privacypolicy.IPrivacyPolicyView;
+import screens.settings.privacypolicy.PrivacyPolicyView;
+import screens.settings.recordings.recent.IRecentRecordingsView;
+import screens.settings.recordings.recent.RecentRecordingsView;
+import screens.settings.recordings.saved.ISavedRecordingsView;
+import screens.settings.recordings.saved.SavedRecordingsView;
 import screens.settings.settingsitem.ISettingsItemView;
 import screens.settings.settingsitem.SettingsItemView;
+import screens.settings.termsofuse.ITermsOfUseView;
+import screens.settings.termsofuse.TermsOfUseView;
 
 
 public class LightHouseViewFactory {
@@ -49,5 +61,29 @@ public class LightHouseViewFactory {
 
     public IAccountView getAccountView(ViewGroup parent) {
         return new AccountView(layoutInflater, parent, this);
+    }
+
+    public INotificationsView getNotificationsView(ViewGroup parent) {
+        return new NotificationsView(layoutInflater, parent, this);
+    }
+
+    public IPrivacyPolicyView getPrivacyPolicyView(ViewGroup parent) {
+        return new PrivacyPolicyView(layoutInflater, parent, this);
+    }
+
+    public IContactUsView getContactUsView(ViewGroup parent) {
+        return new ContactUsView(layoutInflater, parent, this);
+    }
+
+    public ITermsOfUseView getTermsOfUseView(ViewGroup parent) {
+        return new TermsOfUseView(layoutInflater, parent, this);
+    }
+
+    public ISavedRecordingsView getSavedRecordingsView(ViewGroup parent) {
+        return new SavedRecordingsView(layoutInflater, parent, this);
+    }
+
+    public IRecentRecordingsView getRecentRecordingsView(ViewGroup parent) {
+        return new RecentRecordingsView(layoutInflater, parent, this);
     }
 }

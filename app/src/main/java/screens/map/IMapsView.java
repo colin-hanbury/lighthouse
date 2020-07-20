@@ -1,6 +1,7 @@
 package screens.map;
 
 import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.model.LatLng;
 
 import screens.common.view.IBaseObservableView;
 
@@ -12,6 +13,9 @@ public interface IMapsView extends IBaseObservableView<Listener> {
         void onBackClicked();
         void onLogoutClicked();
     }
+
+    void goToCurrentLocation(LatLng location);
+
     void showProgressIndication();
 
     void hideProgressIndication();

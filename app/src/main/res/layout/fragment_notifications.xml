@@ -1,35 +1,31 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/colourPrimary">
+
+    <include layout="@layout/widget_toolbar"/>
 
     <RelativeLayout
         android:id="@+id/police_nearby_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp">
+        android:layout_margin="20dp"
+        android:layout_below="@+id/toolbar_widget">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/notify_police_nearby_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textSize="18dp"
+            android:textColor="@color/colourWhite"
+            android:text="@string/police_nearby_notify"/>
 
-            <TextView
-                android:id="@+id/notify_police_nearby_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-
-                android:text="@string/police_nearby_notify"/>
-
-            <Switch
-                android:id="@+id/notify_police_nearby_switch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right" />
-        </LinearLayout>
-
-
+        <Switch
+            android:id="@+id/notify_police_nearby_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -41,24 +37,19 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/notify_payment_due_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left"
-                android:text="@string/payment_due_notify"/>
-            <Switch
-                android:id="@+id/notify_payment_due_switch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"/>
-        </LinearLayout>
-
+        <TextView
+            android:id="@+id/notify_payment_due_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textSize="18dp"
+            android:textColor="@color/colourWhite"
+            android:text="@string/payment_due_notify"/>
+        <Switch
+            android:id="@+id/notify_payment_due_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
 </RelativeLayout>

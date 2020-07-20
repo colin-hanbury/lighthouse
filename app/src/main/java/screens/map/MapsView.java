@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 
 import androidx.appcompat.widget.Toolbar;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -28,6 +29,7 @@ public class MapsView extends BaseObservableView<IMapsView.Listener> implements 
     private final Toolbar mToolbar;
     private final ToolbarView mToolbarView;
     private final MapView mMapView;
+    private GoogleMap mGoogleMap;
     private final String TAG = "MapsView";
 
 
@@ -38,12 +40,9 @@ public class MapsView extends BaseObservableView<IMapsView.Listener> implements 
         mMapView = findViewById(R.id.map_view);
         if (mMapView != null) {
             mMapView.getMapAsync(this);
-
         }
         mToolbar = findViewById(R.id.toolbar_widget);
-
         mToolbarView = lightHouseViewFactory.getToolbarView(mToolbar);
-
         initToolbar();
     }
 
@@ -71,6 +70,15 @@ public class MapsView extends BaseObservableView<IMapsView.Listener> implements 
     }
 
     @Override
+    public void goToCurrentLocation(LatLng location) {
+        if(mGoogleMap !=null){
+            mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+            CameraUpdate zoom = CameraUpdateFactory.zoomTo(10);
+            mGoogleMap.animateCamera(zoom);
+        }
+    }
+
+    @Override
     public void showProgressIndication() {
         mProgressBar.setVisibility(View.VISIBLE);
     }
@@ -88,9 +96,10 @@ public class MapsView extends BaseObservableView<IMapsView.Listener> implements 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         Log.i(TAG, "map ready");
-        LatLng sydney = new LatLng(-34, 151);
-        googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mGoogleMap = googleMap;
+        LatLng galway = new LatLng(53.282388, -9.049340);
+        mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(galway));
+        CameraUpdate zoom = CameraUpdateFactory.zoomTo(10);
+        mGoogleMap.animateCamera(zoom);
     }
-
 }

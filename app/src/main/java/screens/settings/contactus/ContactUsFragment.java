@@ -1,48 +1,49 @@
-package screens.settings.notifications;
+package screens.settings.contactus;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import hanbury.colin.lighthouse.R;
 import screens.common.controllers.BaseFragment;
 import screens.common.navigation.screennavigation.ScreensNavigator;
 
+public class ContactUsFragment extends BaseFragment implements IContactUsView.Listener {
 
-public class NotificationsFragment extends BaseFragment implements  INotificationsView.Listener {
 
-
-    private INotificationsView mINotificationsView;
+    private IContactUsView mIContactUsView;
     private ScreensNavigator mScreensNavigator;
 
-    public static NotificationsFragment newInstance() {
-        NotificationsFragment fragment = new NotificationsFragment();
+    public static ContactUsFragment newInstance() {
+        ContactUsFragment fragment = new ContactUsFragment();
         return fragment;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        mINotificationsView.registerListener(this);
+        mIContactUsView.registerListener(this);
     }
 
     @Override
     public void onStop() {
-        mINotificationsView.unregisterListener(this);
+        mIContactUsView.unregisterListener(this);
         super.onStop();
     }
-
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        mINotificationsView = getCompositionRoot().getLightHouseViewFactory().getNotificationsView(container);
+        mIContactUsView = getCompositionRoot().getLightHouseViewFactory()
+                .getContactUsView(container);
         mScreensNavigator = getCompositionRoot().getScreensNavigator();
-        return mINotificationsView.getRootView();
+        return mIContactUsView.getRootView();
     }
 
     @Override

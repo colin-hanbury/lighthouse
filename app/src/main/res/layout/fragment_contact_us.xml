@@ -1,0 +1,120 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colourPrimary">
+
+    <include layout="@layout/widget_toolbar"/>
+
+    <RelativeLayout
+        android:id="@+id/contact_email_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/rounded_box_background"
+        android:layout_below="@+id/toolbar_widget">
+
+        <TextView
+            android:id="@+id/contact_email_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/colourWhite"
+            android:textSize="18dp"
+            android:text="@string/email_title" />
+
+        <TextView
+            android:id="@+id/contact_email_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
+            android:textSize="18dp"
+            android:text="@string/contact_email_text"
+            android:autoLink="email"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/contact_phone_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_box_background"
+        android:layout_below="@+id/contact_email_layout">
+
+        <TextView
+            android:id="@+id/contact_phone_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/colourWhite"
+            android:textSize="18dp"
+            android:text="@string/phone_title" />
+
+        <TextView
+            android:id="@+id/contact_phone_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
+            android:textSize="18dp"
+            android:text="@string/contact_phone_text"
+            android:autoLink="phone"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/contact_feedback_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_box_background"
+        android:layout_below="@+id/contact_phone_layout">
+
+        <TextView
+            android:id="@+id/contact_feedback_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/colourWhite"
+            android:textSize="18dp"
+            android:text="Leave us a note" />
+
+        <EditText
+            android:id="@+id/contact_feedback_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:layout_below="@id/contact_feedback_title"
+            android:textSize="18dp"
+            android:background="@color/colourWhite"
+            android:hint="@string/leave_note"/>
+
+        <Button
+            android:id="@+id/contact_feedback_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/rounded_button_background"
+            android:layout_below="@+id/contact_feedback_text"
+            android:textColor="@color/colourWhite"
+            android:text="@string/send_feedback"/>
+    </RelativeLayout>
+
+</RelativeLayout>

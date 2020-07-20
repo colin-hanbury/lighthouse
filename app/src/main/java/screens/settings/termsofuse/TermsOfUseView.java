@@ -1,10 +1,7 @@
-package screens.settings.notifications;
+package screens.settings.termsofuse;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.Switch;
-import android.widget.TextView;
-
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -13,39 +10,30 @@ import screens.common.toolbar.ToolbarView;
 import screens.common.view.BaseObservableView;
 import screens.common.viewfactory.LightHouseViewFactory;
 
-public class NotificationsView extends BaseObservableView<INotificationsView.Listener>
-        implements INotificationsView{
+public class TermsOfUseView extends BaseObservableView<ITermsOfUseView.Listener>
+        implements ITermsOfUseView {
 
-    private final TextView mNearbyPolicTextView;
-    private final TextView mPaymentDueTextView;
-    private final Switch mNearbyPoliceSwitch;
-    private final Switch mPaymentDueSwitch;
     private final Toolbar mToolbar;
     private final ToolbarView mToolbarView;
 
+    public TermsOfUseView(LayoutInflater inflater, ViewGroup parent,
+                          LightHouseViewFactory lightHouseViewFactory){
+        setRootView(inflater.inflate(R.layout.fragment_terms_of_use, parent, false));
 
-    public NotificationsView(LayoutInflater inflater, ViewGroup parent,
-                             LightHouseViewFactory lightHouseViewFactory){
-        setRootView(inflater.inflate(R.layout.fragment_notifications, parent, false));
-        mNearbyPolicTextView = findViewById(R.id.notify_police_nearby_text);
-        mPaymentDueTextView = findViewById(R.id.notify_payment_due_text);
-        mNearbyPoliceSwitch = findViewById(R.id.notify_police_nearby_switch);
-        mPaymentDueSwitch = findViewById(R.id.notify_payment_due_switch);
         mToolbar = findViewById(R.id.toolbar_widget);
         mToolbarView = lightHouseViewFactory.getToolbarView(parent);
         initToolbar();
     }
 
-
     private void initToolbar() {
         mToolbar.addView(mToolbarView.getRootView());
 
-        mToolbarView.setTitle(getString(R.string.title_notifications));
+        mToolbarView.setTitle(getString(R.string.title_terms_of_use));
 
         mToolbarView.enableBackButtonAndListen(new ToolbarView.BackClickListener() {
             @Override
             public void onBackClicked() {
-                for (Listener listener : getListeners()) {
+                for (Listener listener: getListeners()){
                     listener.onBackClicked();
                 }
             }
@@ -53,12 +41,13 @@ public class NotificationsView extends BaseObservableView<INotificationsView.Lis
         mToolbarView.enableLogoutButtonAndListen(new ToolbarView.LogoutClickListener() {
             @Override
             public void onLogoutClicked() {
-                for (Listener listener : getListeners()) {
+                for (Listener listener: getListeners()){
                     listener.onLogoutClicked();
                 }
             }
         });
     }
+
 
     @Override
     public void showProgressIndication() {
