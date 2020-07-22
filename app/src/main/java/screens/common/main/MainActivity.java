@@ -12,8 +12,8 @@ import androidx.core.content.ContextCompat;
 
 import screens.common.controllers.BaseActivity;
 import screens.common.navigation.fragmenthelpers.FragmentFrameWrapper;
-import screens.common.navigation.screennavigation.ScreensNavigator;
 import screens.common.navigation.bottomnavigation.IBottomNavigationBar;
+import screens.common.navigation.screennavigation.ScreensNavigator;
 
 public class MainActivity extends BaseActivity implements IBottomNavigationBar.Listener,
         FragmentFrameWrapper {
@@ -30,7 +30,7 @@ public class MainActivity extends BaseActivity implements IBottomNavigationBar.L
         mIBottomNavigationBar = getCompositionRoot().getLightHouseViewFactory()
                 .getBottomNavBar(null);
         setContentView(mIBottomNavigationBar.getRootView());
-        mScreensNavigator.toMapsScreen();
+        mScreensNavigator.toLoginScreen();
     }
 
     @Override

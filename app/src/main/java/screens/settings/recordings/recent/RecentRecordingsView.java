@@ -27,7 +27,7 @@ public class RecentRecordingsView extends BaseObservableView<IRecentRecordingsVi
     private void initToolbar() {
         mToolbar.addView(mToolbarView.getRootView());
 
-        mToolbarView.setTitle(getString(R.string.title_saved_recordings));
+        mToolbarView.setTitle(getString(R.string.title_recent_recordings));
 
         mToolbarView.enableBackButtonAndListen(new ToolbarView.BackClickListener() {
             @Override

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import data.recordings.RecordingFile;
 import screens.common.controllers.BaseFragment;
 import screens.common.navigation.screennavigation.ScreensNavigator;
 
@@ -42,6 +43,11 @@ public class SavedRecordingsFragment extends BaseFragment implements ISavedRecor
                 .getSavedRecordingsView(container);
         mScreensNavigator = getCompositionRoot().getScreensNavigator();
         return mISavedRecordings.getRootView();
+    }
+
+    @Override
+    public void onRecordingFileClicked(RecordingFile recordingFile) {
+        mScreensNavigator.toViewRecordingScreen(recordingFile);
     }
 
     @Override

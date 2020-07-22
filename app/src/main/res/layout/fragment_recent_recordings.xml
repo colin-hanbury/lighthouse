@@ -1,13 +1,25 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="screens.settings.recordings.recent.RecentRecordingsFragment">
+    android:background="@color/colourPrimary">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <include layout="@layout/widget_toolbar"/>
+
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_below="@+id/toolbar_widget">
 
-</FrameLayout>
+
+        <ProgressBar
+            android:id="@+id/recent_recordings_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="invisible"/>
+
+    </RelativeLayout>
+</RelativeLayout>
+

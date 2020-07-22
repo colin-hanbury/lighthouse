@@ -24,13 +24,6 @@ public class SettingsFragment extends BaseFragment implements ISettingsView.List
     private ISettingsView mISettingsView;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (savedInstanceState != null) {
-//            screenState = (ScreenState) savedInstanceState.getSerializable(SAVED_STATE_SCREEN_STATE);
-        }
-    }
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         mISettingsView = getCompositionRoot().getLightHouseViewFactory().getSettingsView(container);

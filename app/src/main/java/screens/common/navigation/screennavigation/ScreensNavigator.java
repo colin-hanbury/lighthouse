@@ -3,9 +3,10 @@ package screens.common.navigation.screennavigation;
 
 import android.util.Log;
 
+import data.recordings.RecordingFile;
 import data.settings.SettingsItem;
 import screens.common.navigation.fragmenthelpers.FragmentFrameHelper;
-import screens.login.ui.login.LoginFragment;
+import screens.login.LoginFragment;
 import screens.map.MapsFragment;
 import screens.record.RecordFragment;
 import screens.settings.SettingsFragment;
@@ -13,6 +14,9 @@ import screens.settings.account.AccountFragment;
 import screens.settings.contactus.ContactUsFragment;
 import screens.settings.notifications.NotificationsFragment;
 import screens.settings.privacypolicy.PrivacyPolicyFragment;
+import screens.settings.recordings.recent.RecentRecordingsFragment;
+import screens.settings.recordings.saved.SavedRecordingsFragment;
+import screens.settings.recordings.view.ViewRecordingFragment;
 import screens.settings.termsofuse.TermsOfUseFragment;
 
 public class ScreensNavigator {
@@ -55,24 +59,28 @@ public class ScreensNavigator {
         mFragmentFrameHelper.replaceFragment(SavedRecordingsFragment.newInstance());
     }
 
-    private void toNotificationsScreen() {
+    public void toNotificationsScreen() {
         Log.i(TAG, "navigating to Notifications screen");
         mFragmentFrameHelper.replaceFragment(NotificationsFragment.newInstance());
     }
 
-    private void toContactUsScreen(){
+    public void toContactUsScreen(){
         Log.i(TAG, "navigating to Contact Us screen");
         mFragmentFrameHelper.replaceFragment(ContactUsFragment.newInstance());
     }
 
-    private void toTermsOfUseScreen() {
+    public void toTermsOfUseScreen() {
         Log.i(TAG, "navigating to Terms of Use screen");
         mFragmentFrameHelper.replaceFragment(TermsOfUseFragment.newInstance());
     }
 
-    private void toPrivacyPolicyScreen() {
+    public void toPrivacyPolicyScreen() {
         Log.i(TAG, "navigating to Privacy Policy screen");
         mFragmentFrameHelper.replaceFragment(PrivacyPolicyFragment.newInstance());
+    }
+    public void toViewRecordingScreen(RecordingFile recordingFile) {
+        Log.i(TAG, "navigating to Recording File screen");
+        mFragmentFrameHelper.replaceFragment(ViewRecordingFragment.newInstance(recordingFile));
     }
 
     public void toLoginScreen() {
@@ -108,5 +116,4 @@ public class ScreensNavigator {
                 break;
         }
     }
-
 }

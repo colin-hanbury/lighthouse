@@ -97,9 +97,9 @@ public class MapsView extends BaseObservableView<IMapsView.Listener> implements 
     public void onMapReady(GoogleMap googleMap) {
         Log.i(TAG, "map ready");
         mGoogleMap = googleMap;
-        LatLng galway = new LatLng(53.282388, -9.049340);
+        LatLng galway = new LatLng(53.272315, -9.053389);
         mGoogleMap.moveCamera(CameraUpdateFactory.newLatLng(galway));
-        CameraUpdate zoom = CameraUpdateFactory.zoomTo(10);
-        mGoogleMap.animateCamera(zoom);
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(galway, 13);
+        mGoogleMap.animateCamera(cameraUpdate);
     }
 }

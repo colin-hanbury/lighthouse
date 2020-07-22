@@ -19,7 +19,6 @@ import android.hardware.camera2.params.StreamConfigurationMap;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.util.Log;

@@ -88,17 +88,21 @@
             android:id="@+id/contact_feedback_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginLeft="10dp"
             android:layout_alignParentLeft="true"
             android:textColor="@color/colourWhite"
             android:textSize="18dp"
-            android:text="Leave us a note" />
+            android:text="@string/leave_us_a_note" />
 
         <EditText
             android:id="@+id/contact_feedback_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:layout_margin="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
             android:layout_below="@id/contact_feedback_title"
             android:textSize="18dp"
             android:background="@color/colourWhite"

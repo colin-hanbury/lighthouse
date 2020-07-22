@@ -8,6 +8,8 @@ import androidx.annotation.Nullable;
 import screens.common.navigation.bottomnavigation.BottomNavigationBar;
 import screens.common.navigation.bottomnavigation.IBottomNavigationBar;
 import screens.common.toolbar.ToolbarView;
+import screens.login.ILoginView;
+import screens.login.LoginView;
 import screens.map.IMapsView;
 import screens.map.MapsView;
 import screens.record.IRecordView;
@@ -24,6 +26,8 @@ import screens.settings.privacypolicy.IPrivacyPolicyView;
 import screens.settings.privacypolicy.PrivacyPolicyView;
 import screens.settings.recordings.recent.IRecentRecordingsView;
 import screens.settings.recordings.recent.RecentRecordingsView;
+import screens.settings.recordings.recordingfile.IRecordingFileView;
+import screens.settings.recordings.recordingfile.RecordingFileView;
 import screens.settings.recordings.saved.ISavedRecordingsView;
 import screens.settings.recordings.saved.SavedRecordingsView;
 import screens.settings.settingsitem.ISettingsItemView;
@@ -38,6 +42,11 @@ public class LightHouseViewFactory {
 
     public LightHouseViewFactory(LayoutInflater layoutInflater) {
         this.layoutInflater = layoutInflater;
+    }
+
+
+    public ILoginView getLoginView(ViewGroup parent) {
+        return new LoginView(layoutInflater,parent, this);
     }
 
     public IRecordView getRecordView(@Nullable ViewGroup parent) {
@@ -86,4 +95,9 @@ public class LightHouseViewFactory {
     public IRecentRecordingsView getRecentRecordingsView(ViewGroup parent) {
         return new RecentRecordingsView(layoutInflater, parent, this);
     }
+
+    public IRecordingFileView getRecordingFileView(ViewGroup parent){
+        return new RecordingFileView(layoutInflater, parent);
+    }
+
 }
