@@ -1,0 +1,194 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="hanbury.colin.lighthouse"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+8-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml
+10
+11    <!--
+12         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+13         Google Maps Android API v2, but you must specify either coarse or fine
+14         location permissions for the "MyLocation" functionality.
+15    -->
+16    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+16-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:10:5-79
+16-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:10:22-76
+17    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+17-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:11:5-81
+17-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:11:22-78
+18    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+18-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:12:5-80
+18-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:12:22-77
+19    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+19-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:13:5-81
+19-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:13:22-78
+20    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+20-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:14:5-71
+20-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:14:22-68
+21    <uses-permission android:name="android.permission.CAMERA" />
+21-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:15:5-65
+21-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:15:22-62
+22
+23    <!-- Include required permissions for Google Maps API to run. -->
+24    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+24-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\7dfc471bb7895bd3179d625100b7218f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:5-79
+24-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\7dfc471bb7895bd3179d625100b7218f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:22-76
+25    <uses-permission android:name="android.permission.INTERNET" />
+25-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\7dfc471bb7895bd3179d625100b7218f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:24:5-67
+25-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\7dfc471bb7895bd3179d625100b7218f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:24:22-64
+26
+27    <uses-feature
+27-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\7dfc471bb7895bd3179d625100b7218f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:26:5-28:35
+28        android:glEsVersion="0x00020000"
+28-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\7dfc471bb7895bd3179d625100b7218f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:27:9-41
+29        android:required="true" />
+29-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\7dfc471bb7895bd3179d625100b7218f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:28:9-32
+30
+31    <application
+31-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:17:5-49:19
+32        android:allowBackup="true"
+32-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:18:9-35
+33        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+33-->[androidx.core:core:1.1.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\6cdf211888e0a7ccbf81d39b63072413\core-1.1.0\AndroidManifest.xml:24:18-86
+34        android:debuggable="true"
+35        android:extractNativeLibs="false"
+36        android:hardwareAccelerated="true"
+36-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:20:9-43
+37        android:icon="@mipmap/ic_launcher"
+37-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:19:9-43
+38        android:label="@string/app_name"
+38-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:21:9-41
+39        android:roundIcon="@mipmap/ic_app_icon_round"
+39-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:22:9-54
+40        android:supportsRtl="true"
+40-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:23:9-35
+41        android:testOnly="true"
+42        android:theme="@style/AppTheme" >
+42-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:24:9-40
+43
+44        <!--
+45             The API key for Google Maps-based APIs is defined as a string resource.
+46             (See the file "res/values/google_maps_api.xml").
+47             Note that the API key is linked to the encryption key used to sign the APK.
+48             You need a different API key for each encryption key, including the release key that is used to
+49             sign the APK for publishing.
+50             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+51        -->
+52        <meta-data
+52-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:34:9-36:55
+53            android:name="com.google.android.geo.API_KEY"
+53-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:35:13-58
+54            android:value="@string/google_maps_key" />
+54-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:36:13-52
+55
+56        <activity
+56-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:38:9-48:20
+57            android:name="screens.common.main.MainActivity"
+57-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:39:13-60
+58            android:configChanges="orientation|screenSize"
+58-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:41:13-59
+59            android:label="@string/app_name"
+59-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:40:13-45
+60            android:theme="@style/AppTheme.NoActionBar" >
+60-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:42:13-56
+61            <intent-filter>
+61-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:43:13-47:29
+62                <action android:name="android.intent.action.MAIN" />
+62-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:44:17-69
+62-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:44:25-66
+63
+64                <category android:name="android.intent.category.LAUNCHER" />
+64-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:46:17-77
+64-->C:\Users\colin\AndroidStudioProjects\LightHouse\app\src\main\AndroidManifest.xml:46:27-74
+65            </intent-filter>
+66        </activity>
+67        <!-- Needs to be explicitly declared on P+ -->
+68        <uses-library
+68-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\7dfc471bb7895bd3179d625100b7218f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:33:9-35:40
+69            android:name="org.apache.http.legacy"
+69-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\7dfc471bb7895bd3179d625100b7218f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:34:13-50
+70            android:required="false" />
+70-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\7dfc471bb7895bd3179d625100b7218f\jetified-play-services-maps-17.0.0\AndroidManifest.xml:35:13-37
+71
+72        <meta-data
+72-->[com.google.maps.android:android-maps-utils:2.0.1] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\6ecca19d78840bfaeecbeeb962e19bf5\jetified-android-maps-utils-2.0.1\AndroidManifest.xml:12:9-14:69
+73            android:name="com.google.android.gms.version"
+73-->[com.google.maps.android:android-maps-utils:2.0.1] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\6ecca19d78840bfaeecbeeb962e19bf5\jetified-android-maps-utils-2.0.1\AndroidManifest.xml:13:13-58
+74            android:value="@integer/google_play_services_version" />
+74-->[com.google.maps.android:android-maps-utils:2.0.1] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\6ecca19d78840bfaeecbeeb962e19bf5\jetified-android-maps-utils-2.0.1\AndroidManifest.xml:14:13-66
+75
+76        <service
+76-->[com.google.firebase:firebase-firestore:21.4.2] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\455a1191329e04cdd1746f1c214c4627\jetified-firebase-firestore-21.4.2\AndroidManifest.xml:17:9-23:19
+77            android:name="com.google.firebase.components.ComponentDiscoveryService"
+77-->[com.google.firebase:firebase-firestore:21.4.2] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\455a1191329e04cdd1746f1c214c4627\jetified-firebase-firestore-21.4.2\AndroidManifest.xml:18:13-84
+78            android:directBootAware="true"
+78-->[com.google.firebase:firebase-common:19.3.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\d5ae2f905dca277d72c2333071856016\jetified-firebase-common-19.3.0\AndroidManifest.xml:34:13-43
+79            android:exported="false" >
+79-->[com.google.firebase:firebase-firestore:21.4.2] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\455a1191329e04cdd1746f1c214c4627\jetified-firebase-firestore-21.4.2\AndroidManifest.xml:19:13-37
+80            <meta-data
+80-->[com.google.firebase:firebase-firestore:21.4.2] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\455a1191329e04cdd1746f1c214c4627\jetified-firebase-firestore-21.4.2\AndroidManifest.xml:20:13-22:85
+81                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+81-->[com.google.firebase:firebase-firestore:21.4.2] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\455a1191329e04cdd1746f1c214c4627\jetified-firebase-firestore-21.4.2\AndroidManifest.xml:21:17-111
+82                android:value="com.google.firebase.components.ComponentRegistrar" />
+82-->[com.google.firebase:firebase-firestore:21.4.2] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\455a1191329e04cdd1746f1c214c4627\jetified-firebase-firestore-21.4.2\AndroidManifest.xml:22:17-82
+83            <meta-data
+83-->[com.google.firebase:firebase-auth:19.3.1] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\1bbaf7abea02385a761c3d8376edeb69\jetified-firebase-auth-19.3.1\AndroidManifest.xml:36:13-38:85
+84                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+84-->[com.google.firebase:firebase-auth:19.3.1] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\1bbaf7abea02385a761c3d8376edeb69\jetified-firebase-auth-19.3.1\AndroidManifest.xml:37:17-109
+85                android:value="com.google.firebase.components.ComponentRegistrar" />
+85-->[com.google.firebase:firebase-auth:19.3.1] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\1bbaf7abea02385a761c3d8376edeb69\jetified-firebase-auth-19.3.1\AndroidManifest.xml:38:17-82
+86        </service>
+87
+88        <activity
+88-->[com.google.firebase:firebase-auth:19.3.1] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\1bbaf7abea02385a761c3d8376edeb69\jetified-firebase-auth-19.3.1\AndroidManifest.xml:24:9-31:50
+89            android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
+89-->[com.google.firebase:firebase-auth:19.3.1] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\1bbaf7abea02385a761c3d8376edeb69\jetified-firebase-auth-19.3.1\AndroidManifest.xml:25:13-85
+90            android:excludeFromRecents="true"
+90-->[com.google.firebase:firebase-auth:19.3.1] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\1bbaf7abea02385a761c3d8376edeb69\jetified-firebase-auth-19.3.1\AndroidManifest.xml:26:13-46
+91            android:exported="true"
+91-->[com.google.firebase:firebase-auth:19.3.1] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\1bbaf7abea02385a761c3d8376edeb69\jetified-firebase-auth-19.3.1\AndroidManifest.xml:27:13-36
+92            android:launchMode="singleTask"
+92-->[com.google.firebase:firebase-auth:19.3.1] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\1bbaf7abea02385a761c3d8376edeb69\jetified-firebase-auth-19.3.1\AndroidManifest.xml:28:13-44
+93            android:permission="com.google.firebase.auth.api.gms.permission.LAUNCH_FEDERATED_SIGN_IN"
+93-->[com.google.firebase:firebase-auth:19.3.1] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\1bbaf7abea02385a761c3d8376edeb69\jetified-firebase-auth-19.3.1\AndroidManifest.xml:29:13-102
+94            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+94-->[com.google.firebase:firebase-auth:19.3.1] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\1bbaf7abea02385a761c3d8376edeb69\jetified-firebase-auth-19.3.1\AndroidManifest.xml:30:13-72
+95
+96        <provider
+96-->[com.google.firebase:firebase-common:19.3.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\d5ae2f905dca277d72c2333071856016\jetified-firebase-common-19.3.0\AndroidManifest.xml:26:9-30:39
+97            android:name="com.google.firebase.provider.FirebaseInitProvider"
+97-->[com.google.firebase:firebase-common:19.3.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\d5ae2f905dca277d72c2333071856016\jetified-firebase-common-19.3.0\AndroidManifest.xml:27:13-77
+98            android:authorities="hanbury.colin.lighthouse.firebaseinitprovider"
+98-->[com.google.firebase:firebase-common:19.3.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\d5ae2f905dca277d72c2333071856016\jetified-firebase-common-19.3.0\AndroidManifest.xml:28:13-72
+99            android:exported="false"
+99-->[com.google.firebase:firebase-common:19.3.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\d5ae2f905dca277d72c2333071856016\jetified-firebase-common-19.3.0\AndroidManifest.xml:29:13-37
+100            android:initOrder="100" />
+100-->[com.google.firebase:firebase-common:19.3.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\d5ae2f905dca277d72c2333071856016\jetified-firebase-common-19.3.0\AndroidManifest.xml:30:13-36
+101
+102        <activity
+102-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\73f874509465423414ab7604a318e1cc\jetified-play-services-base-17.1.0\AndroidManifest.xml:23:9-26:75
+103            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+103-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\73f874509465423414ab7604a318e1cc\jetified-play-services-base-17.1.0\AndroidManifest.xml:24:13-79
+104            android:exported="false"
+104-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\73f874509465423414ab7604a318e1cc\jetified-play-services-base-17.1.0\AndroidManifest.xml:25:13-37
+105            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+105-->[com.google.android.gms:play-services-base:17.1.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\73f874509465423414ab7604a318e1cc\jetified-play-services-base-17.1.0\AndroidManifest.xml:26:13-72
+106
+107        <provider
+107-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\eb86d70faba0f24fa8225d854e9aff80\jetified-lifecycle-process-2.1.0\AndroidManifest.xml:23:9-27:43
+108            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+108-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\eb86d70faba0f24fa8225d854e9aff80\jetified-lifecycle-process-2.1.0\AndroidManifest.xml:24:13-79
+109            android:authorities="hanbury.colin.lighthouse.lifecycle-process"
+109-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\eb86d70faba0f24fa8225d854e9aff80\jetified-lifecycle-process-2.1.0\AndroidManifest.xml:25:13-69
+110            android:exported="false"
+110-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\eb86d70faba0f24fa8225d854e9aff80\jetified-lifecycle-process-2.1.0\AndroidManifest.xml:26:13-37
+111            android:multiprocess="true" />
+111-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\colin\.gradle\caches\transforms-2\files-2.1\eb86d70faba0f24fa8225d854e9aff80\jetified-lifecycle-process-2.1.0\AndroidManifest.xml:27:13-40
+112    </application>
+113
+114</manifest>

@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 
 import androidx.appcompat.widget.Toolbar;
 
+import data.login.LoginDetails;
 import hanbury.colin.lighthouse.R;
 import screens.common.toolbar.ToolbarView;
 import screens.common.view.BaseObservableView;
@@ -23,15 +24,17 @@ public class LoginView extends BaseObservableView<ILoginView.Listener> implement
     private final EditText mEmailField;
     private final EditText mPasswordField;
     private final ProgressBar mProgressBar;
+    private LoginDetails mLoginDetails;
 
     public LoginView(LayoutInflater inflater, ViewGroup container,
                      LightHouseViewFactory lightHouseViewFactory){
-        setRootView(inflater.inflate(R.layout.fragment_login, container));
+        setRootView(inflater.inflate(R.layout.fragment_login, container, false));
         mLoginButton = findViewById(R.id.login_button);
         mRegisterButton = findViewById(R.id.register_button);
         mEmailField = findViewById(R.id.email_input);
         mPasswordField = findViewById(R.id.password_input);
         mProgressBar = findViewById(R.id.login_progress);
+        mProgressBar.setVisibility(View.GONE);
         mToolbar = findViewById(R.id.toolbar_widget);
         mToolbarView = lightHouseViewFactory.getToolbarView(container);
         initToolbarAndButtons();
@@ -53,7 +56,7 @@ public class LoginView extends BaseObservableView<ILoginView.Listener> implement
             public void onClick(View v) {
                 getEnteredDetails();
                 for (Listener listener: getListeners()){
-                    listener.onLoginClicked();
+                    listener.onLoginClicked(mLoginDetails);
                 }
             }
         });
@@ -62,7 +65,7 @@ public class LoginView extends BaseObservableView<ILoginView.Listener> implement
             public void onClick(View v) {
                 getEnteredDetails();
                 for (Listener listener: getListeners()){
-                    listener.onRegisterClicked();
+                    listener.onRegisterClicked(mLoginDetails);
                 }
             }
         });
@@ -71,6 +74,7 @@ public class LoginView extends BaseObservableView<ILoginView.Listener> implement
     private void getEnteredDetails() {
         String email = mEmailField.getText().toString();
         String password = mPasswordField.getText().toString();
+        mLoginDetails = new LoginDetails(email, password);
     }
 
 

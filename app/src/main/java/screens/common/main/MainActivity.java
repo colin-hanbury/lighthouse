@@ -72,9 +72,6 @@ public class MainActivity extends BaseActivity implements IBottomNavigationBar.L
 
     public void requestPermission(){
         checkPermissions();
-//        checkRecordAudioPermission();
-//        checkReadPermission();
-//        checkWritePermission();
     }
 
 

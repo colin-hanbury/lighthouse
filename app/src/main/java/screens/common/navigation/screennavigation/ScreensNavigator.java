@@ -28,6 +28,12 @@ public class ScreensNavigator {
         mFragmentFrameHelper = fragmentFrameHelper;
     }
 
+
+    public void toLoginScreen() {
+        Log.i(TAG, "navigating to Login screen");
+        mFragmentFrameHelper.replaceFragmentAndClearBackstack(LoginFragment.newInstance());
+    }
+
     public void toMapsScreen() {
         Log.i(TAG, "navigating to Map screen");
         mFragmentFrameHelper.replaceFragmentAndClearBackstack(MapsFragment.newInstance());
@@ -81,10 +87,6 @@ public class ScreensNavigator {
     public void toViewRecordingScreen(RecordingFile recordingFile) {
         Log.i(TAG, "navigating to Recording File screen");
         mFragmentFrameHelper.replaceFragment(ViewRecordingFragment.newInstance(recordingFile));
-    }
-
-    public void toLoginScreen() {
-        mFragmentFrameHelper.replaceFragment(LoginFragment.newInstance());
     }
 
     public void navigateBack() {

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "878588230225",
+    "firebase_url": "https://lighthouse-908f7.firebaseio.com",
+    "project_id": "lighthouse-908f7",
+    "storage_bucket": "lighthouse-908f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878588230225:android:86fd52a91f0e4502671670",
+        "android_client_info": {
+          "package_name": "hanbury.colin.lighthouse"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "878588230225-01gitb0ckp1ig4rc2vm5poqk0ol5fflt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-N4MHX8BybJjdOI-FfC1uNLxqHcUMhvs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "878588230225-01gitb0ckp1ig4rc2vm5poqk0ol5fflt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

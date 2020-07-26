@@ -3,6 +3,7 @@ package screens.common.viewfactory;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import screens.common.navigation.bottomnavigation.BottomNavigationBar;
@@ -45,7 +46,7 @@ public class LightHouseViewFactory {
     }
 
 
-    public ILoginView getLoginView(ViewGroup parent) {
+    public ILoginView getLoginView(@NonNull ViewGroup parent) {
         return new LoginView(layoutInflater,parent, this);
     }
 

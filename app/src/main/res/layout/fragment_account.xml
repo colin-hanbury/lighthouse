@@ -150,7 +150,7 @@
                     android:padding="5dp"
                     android:layout_margin="10dp"
                     android:textColorHint="@color/colourPrimaryLight"
-                    android:hint="@string/back_up_email_placeholder"
+                    android:hint="@string/email_placeholder"
                     android:background="@color/colourWhite"/>
 
                 <Button

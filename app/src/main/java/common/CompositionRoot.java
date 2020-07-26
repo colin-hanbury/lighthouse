@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
+import networking.login.FetchLogin;
+import networking.login.FetchRegistration;
 import screens.common.navigation.fragmenthelpers.FragmentFrameHelper;
 import screens.common.navigation.fragmenthelpers.FragmentFrameWrapper;
 import screens.common.navigation.screennavigation.ScreensNavigator;
@@ -102,6 +104,14 @@ public class CompositionRoot {
 
     private FragmentFrameWrapper getFragmentFrameWrapper() {
         return (FragmentFrameWrapper) getActivity();
+    }
+
+    public FetchLogin getFetchLogin() {
+        return new FetchLogin();
+    }
+
+    public FetchRegistration getFetchRegistration() {
+        return new FetchRegistration();
     }
 //
 //    public BackPressDispatcher getBackPressDispatcher() {
