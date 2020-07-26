@@ -3,6 +3,7 @@ package screens.common.controllers;
 import androidx.fragment.app.FragmentActivity;
 
 import common.CompositionRoot;
+import common.LightHouseApp;
 
 public class BaseActivity extends FragmentActivity {
 
@@ -10,7 +11,7 @@ public class BaseActivity extends FragmentActivity {
 
     protected CompositionRoot getCompositionRoot() {
         if (mCompositionRoot == null) {
-            mCompositionRoot = new CompositionRoot(this);
+            mCompositionRoot = ((LightHouseApp) getApplication()).getCompositionRoot();
         }
         return mCompositionRoot;
     }
