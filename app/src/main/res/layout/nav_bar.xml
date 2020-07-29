@@ -28,7 +28,7 @@
             app:itemBackground="@color/colourPrimaryDark"
             app:itemIconTint="@color/colourWhite"
             app:itemTextColor="@color/colourWhite"
-            app:menu="@menu/nav_bar_menu" />
+            app:menu="@menu/nav_bar_menu"/>
 
     </RelativeLayout>
 </FrameLayout>

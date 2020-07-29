@@ -2,6 +2,7 @@ package screens.settings.recordings.recent;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -56,5 +57,10 @@ public class RecentRecordingsView extends BaseObservableView<IRecentRecordingsVi
     @Override
     public void hideProgressIndication() {
 
+    }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_LONG);
     }
 }

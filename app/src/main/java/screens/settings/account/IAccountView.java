@@ -5,6 +5,7 @@ import screens.common.view.IBaseObservableView;
 
 public interface IAccountView extends IBaseObservableView<IAccountView.Listener> {
 
+
     interface Listener {
         void onBackClicked();
         void onLogoutClicked();
@@ -13,4 +14,6 @@ public interface IAccountView extends IBaseObservableView<IAccountView.Listener>
     void showProgressIndication();
 
     void hideProgressIndication();
+
+    void showToast(String message);
 }

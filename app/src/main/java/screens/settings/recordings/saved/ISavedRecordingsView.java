@@ -5,6 +5,7 @@ import screens.common.view.IBaseObservableView;
 
 public interface ISavedRecordingsView extends IBaseObservableView<ISavedRecordingsView.Listener> {
 
+
     interface Listener {
         void onRecordingFileClicked(RecordingFile recordingFile);
         void onBackClicked();
@@ -14,4 +15,6 @@ public interface ISavedRecordingsView extends IBaseObservableView<ISavedRecordin
     void showProgressIndication();
 
     void hideProgressIndication();
+
+    void showToast(String message);
 }

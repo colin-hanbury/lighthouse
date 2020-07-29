@@ -9,14 +9,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import networking.logout.PostLogout;
 import screens.common.controllers.BaseFragment;
 import screens.common.navigation.screennavigation.ScreensNavigator;
 
-public class ContactUsFragment extends BaseFragment implements IContactUsView.Listener {
+public class ContactUsFragment extends BaseFragment implements IContactUsView.Listener,
+        PostLogout.Listener {
 
 
     private IContactUsView mIContactUsView;
     private ScreensNavigator mScreensNavigator;
+    private PostLogout mPostLogout;
 
     public static ContactUsFragment newInstance() {
         ContactUsFragment fragment = new ContactUsFragment();
@@ -27,11 +30,13 @@ public class ContactUsFragment extends BaseFragment implements IContactUsView.Li
     public void onStart() {
         super.onStart();
         mIContactUsView.registerListener(this);
+        mPostLogout.registerListener(this);
     }
 
     @Override
     public void onStop() {
         mIContactUsView.unregisterListener(this);
+        mPostLogout.unregisterListener(this);
         super.onStop();
     }
 
@@ -40,6 +45,7 @@ public class ContactUsFragment extends BaseFragment implements IContactUsView.Li
                              @Nullable Bundle savedInstanceState) {
         mIContactUsView = getCompositionRoot().getLightHouseViewFactory()
                 .getContactUsView(container);
+        mPostLogout = getCompositionRoot().getPostLogout();
         mScreensNavigator = getCompositionRoot().getScreensNavigator();
         return mIContactUsView.getRootView();
     }
@@ -51,6 +57,16 @@ public class ContactUsFragment extends BaseFragment implements IContactUsView.Li
 
     @Override
     public void onLogoutClicked() {
+        mPostLogout.tryLogoutAndNotify();
+    }
 
+    @Override
+    public void onLogoutSuccess() {
+        mScreensNavigator.toLoginScreen();
+    }
+
+    @Override
+    public void onLogoutFailure(String error) {
+        mIContactUsView.showToast(error);
     }
 }

@@ -16,17 +16,14 @@ import data.user.User;
 
 public class FetchRegistration extends BaseObservable<FetchRegistration.Listener> {
 
-
     public interface Listener {
         void onRegistrationSuccess();
-        void onRegistrationFailure();
+        void onRegistrationFailure(String error);
     }
 
     private String TAG = "FetchRegistration";
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
-    private User mUser;
-
 
     public void tryRegistrationAndNotify(LoginDetails loginDetails){
         mFirebaseAuth = FirebaseAuth.getInstance();
@@ -38,7 +35,7 @@ public class FetchRegistration extends BaseObservable<FetchRegistration.Listener
                     notifySuccess();
                 }
                 else{
-                    notifyFailure();
+                    notifyFailure(task.getException().getMessage());
                 }
             }
         });
@@ -47,16 +44,19 @@ public class FetchRegistration extends BaseObservable<FetchRegistration.Listener
     private void notifySuccess() {
         Log.i(TAG, "notifying registration success");
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
-        mUser = new User(mFirebaseUser.getEmail(), mFirebaseUser.getDisplayName());
+        User user = User.getUserInstance();
+        user.setEmail(mFirebaseUser.getEmail());
+        user.setDisplayName(mFirebaseUser.getEmail().split("@")[0]);
+        user.setUsername(mFirebaseUser.getEmail().replace("@",""));
         for (Listener listener : getListeners()) {
             listener.onRegistrationSuccess();
         }
     }
 
-    private void notifyFailure() {
+    private void notifyFailure(String error) {
         Log.i(TAG, "notifying registration failure");
         for (Listener listener : getListeners()) {
-            listener.onRegistrationFailure();
+            listener.onRegistrationFailure(error);
         }
     }
 }

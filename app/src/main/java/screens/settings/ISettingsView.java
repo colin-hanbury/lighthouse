@@ -7,6 +7,7 @@ import static screens.settings.ISettingsView.*;
 
 public interface ISettingsView extends IBaseObservableView<Listener> {
 
+
     interface Listener {
         void onSettingItemClicked(SettingsItem settingsItem);
         void onBackClicked();
@@ -16,4 +17,6 @@ public interface ISettingsView extends IBaseObservableView<Listener> {
     void showProgressIndication();
 
     void hideProgressIndication();
+
+    void showToast(String message);
 }

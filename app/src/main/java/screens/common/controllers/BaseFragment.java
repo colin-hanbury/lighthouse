@@ -11,8 +11,7 @@ public class BaseFragment extends Fragment {
 
     protected CompositionRoot getCompositionRoot() {
         if (mCompositionRoot == null) {
-            mCompositionRoot = ((LightHouseApp) requireActivity().getApplication())
-                    .getCompositionRoot();
+            mCompositionRoot = new CompositionRoot(requireActivity());
         }
         return mCompositionRoot;
     }

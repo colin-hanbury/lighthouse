@@ -6,8 +6,12 @@ import android.view.LayoutInflater;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
+import data.user.User;
 import networking.login.FetchLogin;
 import networking.login.FetchRegistration;
+import networking.logout.PostLogout;
+import networking.post.recordings.PostToRecentRecordings;
+import screens.common.navigation.bottomnavigation.BottomNavigationBarHelper;
 import screens.common.navigation.fragmenthelpers.FragmentFrameHelper;
 import screens.common.navigation.fragmenthelpers.FragmentFrameWrapper;
 import screens.common.navigation.screennavigation.ScreensNavigator;
@@ -21,6 +25,7 @@ public class CompositionRoot {
     public CompositionRoot(FragmentActivity activity) {
         mActivity = activity;
     }
+
 
     private FragmentActivity getActivity() {
         return mActivity;
@@ -54,6 +59,10 @@ public class CompositionRoot {
         return (FragmentFrameWrapper) getActivity();
     }
 
+    public BottomNavigationBarHelper getNavBarHelper(){
+        return (BottomNavigationBarHelper) getActivity();
+    }
+
     public FetchLogin getFetchLogin() {
         return new FetchLogin();
     }
@@ -62,4 +71,11 @@ public class CompositionRoot {
         return new FetchRegistration();
     }
 
+    public PostToRecentRecordings getPostToRecentRecordings(){
+        return new PostToRecentRecordings();
+    }
+
+    public PostLogout getPostLogout() {
+        return new PostLogout();
+    }
 }

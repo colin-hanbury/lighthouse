@@ -17,6 +17,10 @@ public interface IBottomNavigationBar extends IBaseObservableView<IBottomNavigat
 
     }
 
+    void hideNavBar();
+
+    void showNavBar();
+
     FrameLayout getFragmentFrame();
 
 }

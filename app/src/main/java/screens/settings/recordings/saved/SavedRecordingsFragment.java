@@ -9,15 +9,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import data.recordings.RecordingFile;
+import networking.logout.PostLogout;
 import screens.common.controllers.BaseFragment;
 import screens.common.navigation.screennavigation.ScreensNavigator;
 
 
-public class SavedRecordingsFragment extends BaseFragment implements ISavedRecordingsView.Listener {
+public class SavedRecordingsFragment extends BaseFragment
+        implements ISavedRecordingsView.Listener, PostLogout.Listener {
 
 
     private ISavedRecordingsView mISavedRecordings;
     private ScreensNavigator mScreensNavigator;
+    private PostLogout mPostLogout;
 
     public static SavedRecordingsFragment newInstance() {
         SavedRecordingsFragment fragment = new SavedRecordingsFragment();
@@ -28,11 +31,13 @@ public class SavedRecordingsFragment extends BaseFragment implements ISavedRecor
     public void onStart() {
         super.onStart();
         mISavedRecordings.registerListener(this);
+        mPostLogout.registerListener(this);
     }
 
     @Override
     public void onStop() {
         mISavedRecordings.unregisterListener(this);
+        mPostLogout.unregisterListener(this);
         super.onStop();
     }
 
@@ -41,6 +46,7 @@ public class SavedRecordingsFragment extends BaseFragment implements ISavedRecor
                              @NonNull Bundle savedInstanceState) {
         mISavedRecordings = getCompositionRoot().getLightHouseViewFactory()
                 .getSavedRecordingsView(container);
+        mPostLogout = getCompositionRoot().getPostLogout();
         mScreensNavigator = getCompositionRoot().getScreensNavigator();
         return mISavedRecordings.getRootView();
     }
@@ -57,6 +63,16 @@ public class SavedRecordingsFragment extends BaseFragment implements ISavedRecor
 
     @Override
     public void onLogoutClicked() {
+        mPostLogout.tryLogoutAndNotify();
+    }
 
+    @Override
+    public void onLogoutSuccess() {
+        mScreensNavigator.toLoginScreen();
+    }
+
+    @Override
+    public void onLogoutFailure(String error) {
+        mISavedRecordings.showToast(error);
     }
 }

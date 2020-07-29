@@ -3,6 +3,7 @@ package screens.settings.contactus;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -59,5 +60,10 @@ public class ContactUsView extends BaseObservableView<IContactUsView.Listener>
     @Override
     public void hideProgressIndication() {
 
+    }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_LONG);
     }
 }

@@ -11,12 +11,13 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import screens.common.controllers.BaseActivity;
+import screens.common.navigation.bottomnavigation.BottomNavigationBarHelper;
 import screens.common.navigation.fragmenthelpers.FragmentFrameWrapper;
 import screens.common.navigation.bottomnavigation.IBottomNavigationBar;
 import screens.common.navigation.screennavigation.ScreensNavigator;
 
 public class MainActivity extends BaseActivity implements IBottomNavigationBar.Listener,
-        FragmentFrameWrapper {
+        BottomNavigationBarHelper, FragmentFrameWrapper {
 
     private ScreensNavigator mScreensNavigator;
     private IBottomNavigationBar mIBottomNavigationBar;
@@ -122,5 +123,15 @@ public class MainActivity extends BaseActivity implements IBottomNavigationBar.L
         else {
             return true;
         }
+    }
+
+    @Override
+    public void hideNavBar() {
+        mIBottomNavigationBar.hideNavBar();
+    }
+
+    @Override
+    public void showNavBar() {
+        mIBottomNavigationBar.showNavBar();
     }
 }

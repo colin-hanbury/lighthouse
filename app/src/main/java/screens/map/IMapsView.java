@@ -9,6 +9,7 @@ import static screens.map.IMapsView.*;
 
 public interface IMapsView extends IBaseObservableView<Listener> {
 
+
     interface Listener {
         void onBackClicked();
         void onLogoutClicked();
@@ -19,6 +20,8 @@ public interface IMapsView extends IBaseObservableView<Listener> {
     void showProgressIndication();
 
     void hideProgressIndication();
+
+    void showToast(String message);
 
     MapView getMapView();
 }

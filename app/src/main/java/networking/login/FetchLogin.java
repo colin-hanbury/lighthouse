@@ -24,7 +24,6 @@ public class FetchLogin extends BaseObservable<FetchLogin.Listener> {
     private final String TAG = "FetchLogin";
     private FirebaseUser mFirebaseUser;
     private FirebaseAuth mFirebaseAuth;
-    private User mUser;
 
     public void tryLoginAndNotify(LoginDetails loginDetails){
         mFirebaseAuth = FirebaseAuth.getInstance();
@@ -49,7 +48,6 @@ public class FetchLogin extends BaseObservable<FetchLogin.Listener> {
         }
     }
 
-
     private void notifyFailure(String errorMessage) {
         Log.i(TAG, "notifying login failure");
         for (Listener listener : getListeners()) {
@@ -60,7 +58,10 @@ public class FetchLogin extends BaseObservable<FetchLogin.Listener> {
     private void notifySuccess() {
         Log.i(TAG, "notifying login success");
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
-        mUser = new User(mFirebaseUser.getEmail(), mFirebaseUser.getDisplayName());
+        User user = User.getUserInstance();
+        user.setEmail(mFirebaseUser.getEmail());
+        user.setDisplayName(mFirebaseUser.getEmail().split("@")[0]);
+        user.setUsername(mFirebaseUser.getEmail().replace("@",""));
         for (Listener listener : getListeners()) {
             listener.onLoginSuccess();
         }

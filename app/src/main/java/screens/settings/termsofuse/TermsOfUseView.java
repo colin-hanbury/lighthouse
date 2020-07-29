@@ -2,6 +2,7 @@ package screens.settings.termsofuse;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -57,5 +58,10 @@ public class TermsOfUseView extends BaseObservableView<ITermsOfUseView.Listener>
     @Override
     public void hideProgressIndication() {
 
+    }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(getContext(),message, Toast.LENGTH_LONG);
     }
 }

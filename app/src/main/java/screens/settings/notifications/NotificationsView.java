@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import androidx.appcompat.widget.Toolbar;
@@ -68,5 +69,10 @@ public class NotificationsView extends BaseObservableView<INotificationsView.Lis
     @Override
     public void hideProgressIndication() {
 
+    }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_LONG);
     }
 }

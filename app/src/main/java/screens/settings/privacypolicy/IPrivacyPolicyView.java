@@ -4,6 +4,7 @@ import screens.common.view.IBaseObservableView;
 
 public interface IPrivacyPolicyView extends IBaseObservableView<IPrivacyPolicyView.Listener> {
 
+
     interface Listener {
         void onBackClicked();
         void onLogoutClicked();
@@ -12,4 +13,6 @@ public interface IPrivacyPolicyView extends IBaseObservableView<IPrivacyPolicyVi
     void showProgressIndication();
 
     void  hideProgressIndication();
+
+    void showToast(String message);
 }

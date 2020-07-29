@@ -3,6 +3,7 @@ package screens.common.navigation.bottomnavigation;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
@@ -58,6 +59,16 @@ public class BottomNavigationBar extends BaseObservableView<IBottomNavigationBar
         });
     }
 
+
+    @Override
+    public void hideNavBar() {
+        bottomNavigationView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showNavBar() {
+        bottomNavigationView.setVisibility(View.VISIBLE);
+    }
 
     @Override
     public FrameLayout getFragmentFrame() {

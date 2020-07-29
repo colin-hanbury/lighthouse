@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import androidx.appcompat.widget.Toolbar;
@@ -24,7 +25,7 @@ import static hanbury.colin.lighthouse.R.drawable.ic_stop_recording_icon;
 public class RecordView extends BaseObservableView<IRecordView.Listener> implements IRecordView,
         TextureView.SurfaceTextureListener{
 
-    private static String TAG = "RecordView";
+    private static String TAG = "Record View";
     private final ProgressBar mProgressBar;
     private final VideoView mVideoView;
     private TextureView mTextureView;
@@ -119,6 +120,11 @@ public class RecordView extends BaseObservableView<IRecordView.Listener> impleme
     @Override
     public void showStopRecordingButton() {
         mRecordButton.setImageResource(ic_stop_recording_icon);
+    }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_LONG);
     }
 
     @Override

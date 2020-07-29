@@ -5,8 +5,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
+
+import com.google.common.base.MoreObjects;
 
 import hanbury.colin.lighthouse.R;
 import screens.common.toolbar.ToolbarView;
@@ -77,5 +80,10 @@ public class AccountView extends BaseObservableView<IAccountView.Listener>
     @Override
     public void hideProgressIndication() {
 
+    }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_LONG);
     }
 }

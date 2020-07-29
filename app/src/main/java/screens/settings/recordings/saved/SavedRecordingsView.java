@@ -3,6 +3,7 @@ package screens.settings.recordings.saved;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import androidx.appcompat.widget.Toolbar;
@@ -61,6 +62,11 @@ public class SavedRecordingsView extends BaseObservableView<ISavedRecordingsView
     @Override
     public void hideProgressIndication() {
 
+    }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_LONG);
     }
 
     @Override

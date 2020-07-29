@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 
 import androidx.appcompat.widget.Toolbar;
@@ -86,6 +87,11 @@ public class MapsView extends BaseObservableView<IMapsView.Listener> implements 
     @Override
     public void hideProgressIndication() {
         mProgressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showToast(String message) {
+        Toast.makeText(getContext(), message, Toast.LENGTH_LONG);
     }
 
     @Override

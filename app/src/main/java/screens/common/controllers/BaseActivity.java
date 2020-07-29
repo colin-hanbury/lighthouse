@@ -11,7 +11,8 @@ public class BaseActivity extends FragmentActivity {
 
     protected CompositionRoot getCompositionRoot() {
         if (mCompositionRoot == null) {
-            mCompositionRoot = ((LightHouseApp) getApplication()).getCompositionRoot();
+            mCompositionRoot = new CompositionRoot(this);
+                    //((LightHouseApp) getApplication()).getCompositionRoot();
         }
         return mCompositionRoot;
     }

@@ -3,6 +3,8 @@ package screens.settings.notifications;
 import screens.common.view.IBaseObservableView;
 
 public interface INotificationsView extends IBaseObservableView<INotificationsView.Listener> {
+
+
     interface Listener {
         void onBackClicked();
         void onLogoutClicked();
@@ -11,4 +13,6 @@ public interface INotificationsView extends IBaseObservableView<INotificationsVi
     void showProgressIndication();
 
     void hideProgressIndication();
+
+    void showToast(String message);
 }

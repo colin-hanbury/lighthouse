@@ -1,6 +1,7 @@
 package screens.map;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,15 +11,20 @@ import androidx.annotation.Nullable;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import data.user.User;
+import networking.logout.PostLogout;
 import screens.common.controllers.BaseFragment;
 import screens.common.navigation.screennavigation.ScreensNavigator;
 
-public class MapsFragment extends BaseFragment implements IMapsView.Listener {
+public class MapsFragment extends BaseFragment implements IMapsView.Listener, PostLogout.Listener {
+
+    private static String TAG = "MapsFragment";
 
     private ScreensNavigator mScreensNavigator;
+    private PostLogout mPostLogout;
 
     public static MapsFragment newInstance(){
-
+        Log.i(TAG, User.getUserInstance().getEmail());
         MapsFragment fragment = new MapsFragment();
         return fragment;
     }
@@ -32,6 +38,7 @@ public class MapsFragment extends BaseFragment implements IMapsView.Listener {
                              @Nullable Bundle savedInstanceState) {
         mIMapsView = getCompositionRoot().getLightHouseViewFactory().getMapView(container);
         mIMapsView.getMapView().onCreate(savedInstanceState);
+        mPostLogout = getCompositionRoot().getPostLogout();
         mScreensNavigator = getCompositionRoot().getScreensNavigator();
         return mIMapsView.getRootView();
     }
@@ -44,6 +51,7 @@ public class MapsFragment extends BaseFragment implements IMapsView.Listener {
     public void onStart() {
         super.onStart();
         mIMapsView.registerListener(this);
+        mPostLogout.registerListener(this);
         mIMapsView.getMapView().onStart();
     }
 
@@ -57,6 +65,7 @@ public class MapsFragment extends BaseFragment implements IMapsView.Listener {
     @Override
     public void onStop() {
         mIMapsView.unregisterListener(this);
+        mPostLogout.unregisterListener(this);
         mIMapsView.getMapView().onStop();
         super.onStop();
     }
@@ -90,12 +99,20 @@ public class MapsFragment extends BaseFragment implements IMapsView.Listener {
     @Override
     public void onBackClicked() {
         mScreensNavigator.navigateBack();
-
     }
 
     @Override
     public void onLogoutClicked() {
-
+        mPostLogout.tryLogoutAndNotify();
     }
 
+    @Override
+    public void onLogoutSuccess() {
+        mScreensNavigator.toLoginScreen();
+    }
+
+    @Override
+    public void onLogoutFailure(String error) {
+        mIMapsView.showToast(error);
+    }
 }

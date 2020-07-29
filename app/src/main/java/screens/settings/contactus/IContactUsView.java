@@ -4,6 +4,7 @@ import screens.common.view.IBaseObservableView;
 
 public interface IContactUsView extends IBaseObservableView<IContactUsView.Listener> {
 
+
     interface Listener{
         void onBackClicked();
         void onLogoutClicked();
@@ -12,4 +13,6 @@ public interface IContactUsView extends IBaseObservableView<IContactUsView.Liste
     void showProgressIndication();
 
     void hideProgressIndication();
+
+    void showToast(String message);
 }

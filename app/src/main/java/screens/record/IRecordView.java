@@ -10,6 +10,7 @@ import static screens.record.IRecordView.*;
 
 public interface IRecordView extends IBaseObservableView<Listener> {
 
+
     interface Listener {
         void onBackClicked();
         void onLogoutClicked();
@@ -33,4 +34,6 @@ public interface IRecordView extends IBaseObservableView<Listener> {
     void showStartRecordingButton();
 
     void showStopRecordingButton();
+
+    void showToast(String message);
 }

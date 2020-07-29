@@ -28,6 +28,7 @@ import android.view.LayoutInflater;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -44,13 +45,18 @@ import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.Semaphore;
 
+import data.user.User;
+import networking.logout.PostLogout;
+import networking.post.recordings.PostToRecentRecordings;
 import screens.common.controllers.BaseFragment;
 import screens.common.navigation.screennavigation.ScreensNavigator;
 
 
-public class RecordFragment extends BaseFragment implements IRecordView.Listener{
+public class RecordFragment extends BaseFragment implements IRecordView.Listener,
+        PostToRecentRecordings.Listener, PostLogout.Listener {
 
-
+    private PostLogout mPostLogout;
+    private PostToRecentRecordings mPostToRecents;
     private ScreensNavigator mScreensNavigator;
     private HandlerThread mBackgroundThread;
     private Semaphore mCameraOpenCloseLock = new Semaphore(1);
@@ -87,7 +93,10 @@ public class RecordFragment extends BaseFragment implements IRecordView.Listener
 
 
 
+
     public static RecordFragment newInstance(){
+        Log.i(TAG, "email: " + User.getUserInstance().getEmail());
+        Log.i(TAG, "name: " + User.getUserInstance().getDisplayName());
         RecordFragment fragment = new RecordFragment();
         return fragment;
     }
@@ -127,9 +136,11 @@ public class RecordFragment extends BaseFragment implements IRecordView.Listener
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-
+        Log.i(TAG, "email: " + User.getUserInstance().getEmail());
         mIRecordView = getCompositionRoot().getLightHouseViewFactory().getRecordView(container);
+        mPostLogout = getCompositionRoot().getPostLogout();
         mScreensNavigator = getCompositionRoot().getScreensNavigator();
+        mPostToRecents = getCompositionRoot().getPostToRecentRecordings();
         return mIRecordView.getRootView();
     }
 
@@ -137,6 +148,8 @@ public class RecordFragment extends BaseFragment implements IRecordView.Listener
     public void onStart() {
         super.onStart();
         mIRecordView.registerListener(this);
+        mPostLogout.registerListener(this);
+        mPostToRecents.registerListener(this);
         mIRecordView.showProgressIndication();
         startBackgroundThread();
         mTextureView = (AutoFitTextureView) mIRecordView.getTextureView();
@@ -168,6 +181,9 @@ public class RecordFragment extends BaseFragment implements IRecordView.Listener
 
     @Override
     public void onStop() {
+        mIRecordView.unregisterListener(this);
+        mPostLogout.unregisterListener(this);
+        mPostToRecents.unregisterListener(this);
         super.onStop();
     }
 
@@ -445,6 +461,7 @@ public class RecordFragment extends BaseFragment implements IRecordView.Listener
         // Stop recording
         mMediaRecorder.stop();
         mMediaRecorder.reset();
+        mPostToRecents.tryPostToRecentRecordingsAndNotify(mCurrentFile);
         // Start preview
         try {
             openCamera(mTextureView.getWidth(), mTextureView.getHeight());
@@ -490,6 +507,29 @@ public class RecordFragment extends BaseFragment implements IRecordView.Listener
         }
     }
 
+    @Override
+    public void onPostToRecentRecordingsSuccess() {
+        Log.i(TAG, "post recent recordings success");
+//        mIRecordView.showSavedMessage();
+    }
+
+    @Override
+    public void onPostToRecentRecordingsFailure(String error) {
+        Log.i(TAG, "post recent recordings failure");
+        //        mIRecordView.showFailureMessage(error);
+
+    }
+
+    @Override
+    public void onLogoutSuccess() {
+        mScreensNavigator.toLoginScreen();
+    }
+
+    @Override
+    public void onLogoutFailure(String error) {
+        mIRecordView.showToast(error);
+    }
+
     static class CompareSizesByArea implements Comparator<Size> {
         @Override
         public int compare(Size lhs, Size rhs) {
@@ -507,7 +547,7 @@ public class RecordFragment extends BaseFragment implements IRecordView.Listener
 
     @Override
     public void onLogoutClicked() {
-        //logout
+        mPostLogout.tryLogoutAndNotify();
     }
 
     @Override
