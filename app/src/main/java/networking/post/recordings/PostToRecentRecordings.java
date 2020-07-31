@@ -49,7 +49,8 @@ public class PostToRecentRecordings extends BaseObservable<PostToRecentRecording
              public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                  Uri uri = taskSnapshot.getUploadSessionUri();
                  Log.i(TAG, "post storage success");
-                 saveUriToDB(uri, time);
+                 notifySuccess();
+                 //saveUriToDB(uri, time);
              }
          }).addOnFailureListener(new OnFailureListener() {
              @Override
@@ -60,27 +61,27 @@ public class PostToRecentRecordings extends BaseObservable<PostToRecentRecording
          });
     }
 
-    private void saveUriToDB(Uri uri, String time) {
-        mDatabase = FirebaseFirestore.getInstance();
-        Map<String, String> uriMap = new HashMap<>();
-        uriMap.put("videouri", uri.toString());
-        Log.i(TAG, "starting db post");
-        mDatabase.collection("users").document(mUsername)
-                .collection("recentrecordings").document(time).set(uriMap)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.i(TAG, "post db success");
-                        notifySuccess();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.i(TAG, "post db failure\n " + e.getMessage());
-                        notifyFailure(e.getMessage());
-                    }
-        });
-    }
+//    private void saveUriToDB(Uri uri, String time) {
+//        mDatabase = FirebaseFirestore.getInstance();
+//        Map<String, String> uriMap = new HashMap<>();
+//        uriMap.put("videouri", uri.toString());
+//        Log.i(TAG, "starting db post");
+//        mDatabase.collection("users").document(mUsername)
+//                .collection("recentrecordings").document(time).set(uriMap)
+//                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+//                        Log.i(TAG, "post db success");
+//                        notifySuccess();
+//                    }
+//                }).addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Log.i(TAG, "post db failure\n " + e.getMessage());
+//                        notifyFailure(e.getMessage());
+//                    }
+//        });
+//    }
 
     private void notifySuccess(){
         for (Listener listener: getListeners()){
