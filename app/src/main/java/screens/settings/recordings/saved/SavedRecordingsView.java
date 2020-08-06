@@ -2,18 +2,15 @@ package screens.settings.recordings.saved;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import androidx.appcompat.widget.Toolbar;
 
-import data.recordings.RecordingFile;
+import data.recordings.Recording;
 import hanbury.colin.lighthouse.R;
 import screens.common.toolbar.ToolbarView;
 import screens.common.view.BaseObservableView;
 import screens.common.viewfactory.LightHouseViewFactory;
-import screens.settings.ISettingsView;
 import screens.settings.recordings.RecordingsRecyclerAdapter;
 
 public class SavedRecordingsView extends BaseObservableView<ISavedRecordingsView.Listener>
@@ -70,9 +67,9 @@ public class SavedRecordingsView extends BaseObservableView<ISavedRecordingsView
     }
 
     @Override
-    public void onRecordingFileClicked(RecordingFile recordingFile) {
+    public void onRecordingFileClicked(Recording recording) {
         for(Listener listener: getListeners()){
-            listener.onRecordingFileClicked(recordingFile);
+            listener.onRecordingFileClicked(recording);
         }
     }
 }

@@ -1,10 +1,9 @@
 package screens.common.navigation.screennavigation;
 
 
-import android.app.Activity;
 import android.util.Log;
 
-import data.recordings.RecordingFile;
+import data.recordings.Recording;
 import data.settings.SettingsItem;
 import screens.common.navigation.fragmenthelpers.FragmentFrameHelper;
 import screens.login.LoginFragment;
@@ -85,9 +84,9 @@ public class ScreensNavigator {
         Log.i(TAG, "navigating to Privacy Policy screen");
         mFragmentFrameHelper.replaceFragment(PrivacyPolicyFragment.newInstance());
     }
-    public void toViewRecordingScreen(RecordingFile recordingFile) {
+    public void toViewRecordingScreen(Recording recording) {
         Log.i(TAG, "navigating to Recording File screen");
-        mFragmentFrameHelper.replaceFragment(ViewRecordingFragment.newInstance(recordingFile));
+        mFragmentFrameHelper.replaceFragment(ViewRecordingFragment.newInstance(recording));
     }
 
     public void navigateBack() {

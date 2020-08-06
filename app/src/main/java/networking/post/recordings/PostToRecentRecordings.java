@@ -14,8 +14,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import common.BaseObservable;
@@ -39,10 +41,11 @@ public class PostToRecentRecordings extends BaseObservable<PostToRecentRecording
         String fileName = file.getName();
 
         Uri fileUri = Uri.fromFile(file);
-        String time = String.valueOf(new Date().getTime());
+//        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss",
+//                Locale.getDefault()).format(new Date());
         Log.i(TAG, "starting storage post");
          mStorageRef = FirebaseStorage.getInstance().getReference()
-                 .child("users").child(mUsername).child("recentrecordings").child(time)
+                 .child("users").child(mUsername).child("recentrecordings")
                  .child(fileName);
          mStorageRef.putFile(fileUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
              @Override

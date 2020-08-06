@@ -52,10 +52,7 @@ public class SettingsFragment extends BaseFragment implements ISettingsView.List
 
     @Override
     public void onSettingItemClicked(SettingsItem settingsItem) {
-        mISettingsView.showProgressIndication();
         mScreensNavigator.toSettingsItemScreen(settingsItem);
-        mISettingsView.hideProgressIndication();
-
     }
 
     @Override

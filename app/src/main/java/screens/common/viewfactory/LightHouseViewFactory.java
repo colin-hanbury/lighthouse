@@ -27,8 +27,8 @@ import screens.settings.privacypolicy.IPrivacyPolicyView;
 import screens.settings.privacypolicy.PrivacyPolicyView;
 import screens.settings.recordings.recent.IRecentRecordingsView;
 import screens.settings.recordings.recent.RecentRecordingsView;
-import screens.settings.recordings.recordingfile.IRecordingFileView;
-import screens.settings.recordings.recordingfile.RecordingFileView;
+import screens.settings.recordings.recordingpreview.IRecordingPreviewView;
+import screens.settings.recordings.recordingpreview.RecordingPreviewView;
 import screens.settings.recordings.saved.ISavedRecordingsView;
 import screens.settings.recordings.saved.SavedRecordingsView;
 import screens.settings.settingsitem.ISettingsItemView;
@@ -97,8 +97,8 @@ public class LightHouseViewFactory {
         return new RecentRecordingsView(layoutInflater, parent, this);
     }
 
-    public IRecordingFileView getRecordingFileView(ViewGroup parent){
-        return new RecordingFileView(layoutInflater, parent);
+    public IRecordingPreviewView getRecordingFileView(ViewGroup parent){
+        return new RecordingPreviewView(layoutInflater, parent);
     }
 
 }

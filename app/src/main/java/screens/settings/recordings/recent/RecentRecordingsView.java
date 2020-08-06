@@ -6,13 +6,17 @@ import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
+import java.util.List;
+
+import data.recordings.Recording;
 import hanbury.colin.lighthouse.R;
 import screens.common.toolbar.ToolbarView;
 import screens.common.view.BaseObservableView;
 import screens.common.viewfactory.LightHouseViewFactory;
+import screens.settings.recordings.RecordingsRecyclerAdapter;
 
 public class RecentRecordingsView extends BaseObservableView<IRecentRecordingsView.Listener>
-        implements IRecentRecordingsView {
+        implements IRecentRecordingsView, RecordingsRecyclerAdapter.Listener {
 
     private final Toolbar mToolbar;
     private final ToolbarView mToolbarView;
@@ -60,7 +64,18 @@ public class RecentRecordingsView extends BaseObservableView<IRecentRecordingsVi
     }
 
     @Override
+    public void bindRecordings(List<String> recordingTitles) {
+
+    }
+
+
+    @Override
     public void showToast(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_LONG);
+    }
+
+    @Override
+    public void onRecordingFileClicked(Recording recording) {
+
     }
 }

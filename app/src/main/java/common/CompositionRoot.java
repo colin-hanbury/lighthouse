@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import data.user.User;
+import networking.fetch.recordings.FetchRecentRecordingTitles;
 import networking.login.FetchLogin;
 import networking.login.FetchRegistration;
 import networking.logout.PostLogout;
@@ -16,6 +17,7 @@ import screens.common.navigation.fragmenthelpers.FragmentFrameHelper;
 import screens.common.navigation.fragmenthelpers.FragmentFrameWrapper;
 import screens.common.navigation.screennavigation.ScreensNavigator;
 import screens.common.viewfactory.LightHouseViewFactory;
+import screens.settings.recordings.recent.RecentRecordingsFragment;
 
 
 public class CompositionRoot {
@@ -77,5 +79,9 @@ public class CompositionRoot {
 
     public PostLogout getPostLogout() {
         return new PostLogout();
+    }
+
+    public FetchRecentRecordingTitles getFetchRecentRecordingTitles() {
+        return new FetchRecentRecordingTitles();
     }
 }

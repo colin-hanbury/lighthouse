@@ -1,10 +1,10 @@
 package data.recordings;
 
-public class RecordingFile {
+public class Recording {
     private final String mTitle;
     private final String mDate;
 
-    public RecordingFile(String title, String date){
+    public Recording(String title, String date){
         this.mTitle = title;
         this.mDate = date;
     }

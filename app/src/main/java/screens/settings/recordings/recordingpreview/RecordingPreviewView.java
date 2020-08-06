@@ -1,4 +1,4 @@
-package screens.settings.recordings.recordingfile;
+package screens.settings.recordings.recordingpreview;
 
 
 import android.view.LayoutInflater;
@@ -8,17 +8,18 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import data.recordings.RecordingFile;
+import data.recordings.Recording;
 import hanbury.colin.lighthouse.R;
 import screens.common.view.BaseObservableView;
 
-public class RecordingFileView extends BaseObservableView<IRecordingFileView.Listener> implements IRecordingFileView{
+public class RecordingPreviewView extends BaseObservableView<IRecordingPreviewView.Listener>
+        implements IRecordingPreviewView{
 
-    private RecordingFile mRecordingFile;
+    private Recording mRecording;
     private TextView mTitle;
     private TextView mDate;
 
-    public RecordingFileView(LayoutInflater inflater, @Nullable ViewGroup parent) {
+    public RecordingPreviewView(LayoutInflater inflater, @Nullable ViewGroup parent) {
         setRootView(inflater.inflate(R.layout.recording_file, parent, false));
         mTitle = findViewById(R.id.recording_file_title);
         mDate = findViewById(R.id.recording_file_date);
@@ -26,7 +27,7 @@ public class RecordingFileView extends BaseObservableView<IRecordingFileView.Lis
             @Override
             public void onClick(View view) {
                 for (Listener listener : getListeners()) {
-                    listener.onRecordingFileClicked(mRecordingFile);
+                    listener.onRecordingFileClicked(mRecording);
                 }
             }
         });
@@ -34,9 +35,9 @@ public class RecordingFileView extends BaseObservableView<IRecordingFileView.Lis
 
 
     @Override
-    public void bindRecordingFile(RecordingFile recordingFile) {
-        mRecordingFile = recordingFile;
-        mTitle.setText(mRecordingFile.getTitle());
-        mDate.setText(mRecordingFile.getDate());
+    public void bindRecordingFile(Recording recording) {
+        mRecording = recording;
+        mTitle.setText(mRecording.getTitle());
+        mDate.setText(mRecording.getDate());
     }
 }

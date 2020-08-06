@@ -2,13 +2,11 @@ package screens.settings.recordings.view;
 
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import data.recordings.RecordingFile;
+import data.recordings.Recording;
 import hanbury.colin.lighthouse.R;
 import screens.common.controllers.BaseFragment;
 
@@ -16,14 +14,14 @@ import screens.common.controllers.BaseFragment;
 public class ViewRecordingFragment extends BaseFragment {
 
 
-    private final RecordingFile mRecordingFile;
+    private final Recording mRecording;
 
-    public ViewRecordingFragment(RecordingFile recordingFile) {
-        mRecordingFile = recordingFile;
+    public ViewRecordingFragment(Recording recording) {
+        mRecording = recording;
     }
 
-    public static ViewRecordingFragment newInstance(RecordingFile recordingFile) {
-        ViewRecordingFragment fragment = new ViewRecordingFragment(recordingFile);
+    public static ViewRecordingFragment newInstance(Recording recording) {
+        ViewRecordingFragment fragment = new ViewRecordingFragment(recording);
         return fragment;
     }
 

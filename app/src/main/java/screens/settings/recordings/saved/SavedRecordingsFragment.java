@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import data.recordings.RecordingFile;
+import data.recordings.Recording;
 import networking.logout.PostLogout;
 import screens.common.controllers.BaseFragment;
 import screens.common.navigation.screennavigation.ScreensNavigator;
@@ -52,8 +52,8 @@ public class SavedRecordingsFragment extends BaseFragment
     }
 
     @Override
-    public void onRecordingFileClicked(RecordingFile recordingFile) {
-        mScreensNavigator.toViewRecordingScreen(recordingFile);
+    public void onRecordingFileClicked(Recording recording) {
+        mScreensNavigator.toViewRecordingScreen(recording);
     }
 
     @Override

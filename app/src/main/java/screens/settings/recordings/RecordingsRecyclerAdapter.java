@@ -8,60 +8,61 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-import data.recordings.RecordingFile;
-import data.settings.SettingsItem;
+import data.recordings.Recording;
 import screens.common.viewfactory.LightHouseViewFactory;
-import screens.settings.recordings.recordingfile.IRecordingFileView;
+import screens.settings.recordings.recordingpreview.IRecordingPreviewView;
 
 public class RecordingsRecyclerAdapter extends
         RecyclerView.Adapter<RecordingsRecyclerAdapter.RecordingsViewHolder>
-        implements IRecordingFileView.Listener{
+        implements IRecordingPreviewView.Listener{
 
     private final Listener mListener;
     private final LightHouseViewFactory mLightHouseFactory;
-    private final List<RecordingFile> mRecordingFiles;
+    private final List<Recording> mRecordings;
+
+
 
     public interface Listener {
-        void onRecordingFileClicked(RecordingFile recordingFile);
+        void onRecordingFileClicked(Recording recording);
     }
 
     public RecordingsRecyclerAdapter(Listener listener, LightHouseViewFactory lightHouseViewFactory){
         mListener = listener;
         mLightHouseFactory = lightHouseViewFactory;
-        mRecordingFiles = new ArrayList<>();
+        mRecordings = new ArrayList<>();
     }
 
     @NonNull
     @Override
     public RecordingsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        IRecordingFileView iRecordingFileView = mLightHouseFactory.getRecordingFileView(parent);
-        iRecordingFileView.registerListener(this);
-        return new RecordingsViewHolder(iRecordingFileView);
+        IRecordingPreviewView iRecordingPreviewView = mLightHouseFactory.getRecordingFileView(parent);
+        iRecordingPreviewView.registerListener(this);
+        return new RecordingsViewHolder(iRecordingPreviewView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecordingsViewHolder holder, int position) {
-        holder.mIRecordingFileView.bindRecordingFile(mRecordingFiles.get(position));
+        holder.mIRecordingPreviewView.bindRecordingFile(mRecordings.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return mRecordingFiles.size();
+        return mRecordings.size();
     }
 
     @Override
-    public void onRecordingFileClicked(RecordingFile recordingFile) {
-        mListener.onRecordingFileClicked(recordingFile);
+    public void onRecordingClicked(Recording recording) {
+        mListener.onRecordingFileClicked(recording);
     }
 
     public class RecordingsViewHolder extends RecyclerView.ViewHolder {
 
-        private final IRecordingFileView mIRecordingFileView;
+        private final IRecordingPreviewView mIRecordingPreviewView;
 
-        public RecordingsViewHolder(IRecordingFileView iRecordingFileView) {
-            super(iRecordingFileView.getRootView());
+        public RecordingsViewHolder(IRecordingPreviewView iRecordingPreviewView) {
+            super(iRecordingPreviewView.getRootView());
 
-            this.mIRecordingFileView = iRecordingFileView;
+            this.mIRecordingPreviewView = iRecordingPreviewView;
         }
     }
 }
