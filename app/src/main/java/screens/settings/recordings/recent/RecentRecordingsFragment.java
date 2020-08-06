@@ -74,7 +74,7 @@ public class RecentRecordingsFragment extends BaseFragment
     }
 
     @Override
-    public void onRecordingPreviewClicked(Recording recording) {
+    public void onRecentRecordingPreviewClicked(Recording recording) {
         mScreensNavigator.toViewRecordingScreen(recording);
     }
 
@@ -88,11 +88,10 @@ public class RecentRecordingsFragment extends BaseFragment
         mIRecentRecordingsView.showToast(error);
     }
 
-
     @Override
-    public void onFetchRecentRecordingsSuccess(List<String> titles) {
+    public void onFetchRecentRecordingsSuccess(List<Recording> recordings) {
         mIRecentRecordingsView.hideProgressIndication();
-        mIRecentRecordingsView.bindRecordings(titles);
+        mIRecentRecordingsView.bindRecordings(recordings);
     }
 
     @Override

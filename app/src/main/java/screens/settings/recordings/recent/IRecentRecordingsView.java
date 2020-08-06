@@ -12,14 +12,14 @@ public interface IRecentRecordingsView extends IBaseObservableView<IRecentRecord
     interface Listener{
         void onBackClicked();
         void onLogoutClicked();
-        void onRecentRecordingPreviewClicked(String recordingTitle);
+        void onRecentRecordingPreviewClicked(Recording recording);
     }
 
     void showProgressIndication();
 
     void hideProgressIndication();
 
-    void bindRecordings(List<String> recordingTitles);
+    void bindRecordings(List<Recording> recordingTitles);
 
     void showToast(String message);
 }

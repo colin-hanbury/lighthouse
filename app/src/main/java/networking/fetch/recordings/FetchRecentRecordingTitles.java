@@ -3,13 +3,11 @@ package networking.fetch.recordings;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.solver.widgets.Snapshot;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -22,7 +20,7 @@ import data.user.User;
 public class FetchRecentRecordingTitles extends BaseObservable<FetchRecentRecordingTitles.Listener> {
 
     public interface Listener{
-        void onFetchRecentRecordingsSuccess(List<String> recordings);
+        void onFetchRecentRecordingsSuccess(List<Recording> recordings);
         void onFetchRecentRecordingsFailure(String error);
     }
 
@@ -38,7 +36,7 @@ public class FetchRecentRecordingTitles extends BaseObservable<FetchRecentRecord
 
     private void getRecordingsTitles() {
         Log.i(TAG, "get recording titles");
-        List<String> titles = new ArrayList<>();
+        List<Recording> recordings = new ArrayList<>();
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         database.collection("users").document(mUsername)
                 .collection("recentrecordings").addSnapshotListener(
@@ -47,22 +45,23 @@ public class FetchRecentRecordingTitles extends BaseObservable<FetchRecentRecord
             public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots,
                                 @Nullable FirebaseFirestoreException e) {
                 for (DocumentSnapshot snapshot : queryDocumentSnapshots.getDocuments()){
-                    String uri = (String) snapshot.get("videouri");
-                    titles.add(uri);
+                    String title = (String) snapshot.get("title");
+                    Recording recording = new Recording(title);
+                    recordings.add(recording);
                 }
             }
         });
-        if (titles.isEmpty()){
+        if (recordings.isEmpty()){
             notifyFailure("not recordings found");
         }
         else {
-            notifySuccess(titles);
+            notifySuccess(recordings);
         }
     }
 
-    private void notifySuccess(List<String> titles){
+    private void notifySuccess(List<Recording> recordings){
         for (Listener listener : getListeners()){
-            listener.onFetchRecentRecordingsSuccess(titles);
+            listener.onFetchRecentRecordingsSuccess(recordings);
         }
     }
 

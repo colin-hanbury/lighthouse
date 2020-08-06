@@ -4,9 +4,13 @@ public class Recording {
     private final String mTitle;
     private final String mDate;
 
-    public Recording(String title, String date){
+    public Recording(String title){
         this.mTitle = title;
-        this.mDate = date;
+        this.mDate = makeDateString(title);
+    }
+
+    private String makeDateString(String title) {
+        return title;
     }
 
     public String getTitle() {
@@ -16,4 +20,6 @@ public class Recording {
     public String getDate() {
         return mDate;
     }
+
+
 }
