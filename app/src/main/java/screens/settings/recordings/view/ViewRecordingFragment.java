@@ -9,12 +9,13 @@ import android.view.ViewGroup;
 import data.recordings.Recording;
 import hanbury.colin.lighthouse.R;
 import screens.common.controllers.BaseFragment;
+import screens.settings.recordings.recent.RecentRecordingsFragment;
 
 
-public class ViewRecordingFragment extends BaseFragment {
-
+public class ViewRecordingFragment extends BaseFragment implements IViewRecordingView.Listener {
 
     private final Recording mRecording;
+    private IViewRecordingView mIViewRecordingView;
 
     public ViewRecordingFragment(Recording recording) {
         mRecording = recording;
@@ -28,7 +29,24 @@ public class ViewRecordingFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_view_recording, container, false);
+        mIViewRecordingView = getCompositionRoot().getLightHouseViewFactory()
+                .getViewRecordingView(container);
+
+        return mIViewRecordingView.getRootView();
+    }
+
+    @Override
+    public void onBackClicked() {
+
+    }
+
+    @Override
+    public void onLogoutClicked() {
+
+    }
+
+    @Override
+    public void onPlayPauseClicked() {
+
     }
 }

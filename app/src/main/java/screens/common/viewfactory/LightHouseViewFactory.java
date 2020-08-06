@@ -31,6 +31,8 @@ import screens.settings.recordings.recordingpreview.IRecordingPreviewView;
 import screens.settings.recordings.recordingpreview.RecordingPreviewView;
 import screens.settings.recordings.saved.ISavedRecordingsView;
 import screens.settings.recordings.saved.SavedRecordingsView;
+import screens.settings.recordings.view.IViewRecordingView;
+import screens.settings.recordings.view.ViewRecordingView;
 import screens.settings.settingsitem.ISettingsItemView;
 import screens.settings.settingsitem.SettingsItemView;
 import screens.settings.termsofuse.ITermsOfUseView;
@@ -101,4 +103,7 @@ public class LightHouseViewFactory {
         return new RecordingPreviewView(layoutInflater, parent);
     }
 
+    public IViewRecordingView getViewRecordingView(ViewGroup parent) {
+        return new ViewRecordingView(layoutInflater, parent, this);
+    }
 }

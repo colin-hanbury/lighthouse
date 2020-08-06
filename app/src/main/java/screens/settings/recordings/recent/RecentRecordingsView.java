@@ -64,7 +64,7 @@ public class RecentRecordingsView extends BaseObservableView<IRecentRecordingsVi
     }
 
     @Override
-    public void bindRecordings(List<String> recordingTitles) {
+    public void bindRecordings(List<Recording> recordingTitles) {
 
     }
 
