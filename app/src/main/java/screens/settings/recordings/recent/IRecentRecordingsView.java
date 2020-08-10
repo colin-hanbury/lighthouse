@@ -19,7 +19,7 @@ public interface IRecentRecordingsView extends IBaseObservableView<IRecentRecord
 
     void hideProgressIndication();
 
-    void bindRecordings(List<Recording> recordingTitles);
+    void bindRecentRecordings(List<Recording> recordingTitles);
 
     void showToast(String message);
 }

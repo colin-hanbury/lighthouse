@@ -6,20 +6,23 @@
 
     <include layout="@layout/widget_toolbar"/>
 
-
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/toolbar_widget">
-
 
         <ProgressBar
             android:id="@+id/recent_recordings_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:visibility="invisible"/>
+            android:layout_gravity="center"
+            android:visibility="gone"/>
 
-    </RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recent_recordings_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </FrameLayout>
+
 </RelativeLayout>
 

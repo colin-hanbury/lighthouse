@@ -8,7 +8,7 @@ public interface IRecordingPreviewView extends IBaseObservableView<IRecordingPre
         void onRecordingClicked(Recording recording);
     }
 
-    void bindRecordingFile(Recording recording);
+    void bindRecording(Recording recording);
 }
 
 

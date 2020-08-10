@@ -2,12 +2,16 @@ package networking.fetch.recordings;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -39,24 +43,31 @@ public class FetchRecentRecordingTitles extends BaseObservable<FetchRecentRecord
         List<Recording> recordings = new ArrayList<>();
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         database.collection("users").document(mUsername)
-                .collection("recentrecordings").addSnapshotListener(
-                        new EventListener<QuerySnapshot>() {
+                .collection("recentrecordings").get().addOnCompleteListener(
+                        new OnCompleteListener<QuerySnapshot>() {
             @Override
-            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots,
-                                @Nullable FirebaseFirestoreException e) {
-                for (DocumentSnapshot snapshot : queryDocumentSnapshots.getDocuments()){
-                    String title = (String) snapshot.get("title");
-                    Recording recording = new Recording(title);
-                    recordings.add(recording);
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    for (QueryDocumentSnapshot snapshot: task.getResult()){
+                        String title = (String) snapshot.get("title");
+                        String date = (String) snapshot.get("date");
+                        Log.i(TAG, title);
+                        Log.i(TAG, date);
+                        Recording recording = new Recording(title, date);
+                        recordings.add(recording);
+                    }
+                    if (recordings.isEmpty()){
+                        notifyFailure("No recent recordings found");
+                    }
+                    else {
+                        notifySuccess(recordings);
+                    }
+                }
+                else {
+                    notifyFailure("Couldn't retrieve recent recordings");
                 }
             }
         });
-        if (recordings.isEmpty()){
-            notifyFailure("not recordings found");
-        }
-        else {
-            notifySuccess(recordings);
-        }
     }
 
     private void notifySuccess(List<Recording> recordings){
@@ -70,6 +81,5 @@ public class FetchRecentRecordingTitles extends BaseObservable<FetchRecentRecord
             listener.onFetchRecentRecordingsFailure(error);
         }
     }
-
 }
 

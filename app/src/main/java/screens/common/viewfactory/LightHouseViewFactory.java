@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import data.recordings.Recording;
 import screens.common.navigation.bottomnavigation.BottomNavigationBar;
 import screens.common.navigation.bottomnavigation.IBottomNavigationBar;
 import screens.common.toolbar.ToolbarView;
@@ -103,7 +104,7 @@ public class LightHouseViewFactory {
         return new RecordingPreviewView(layoutInflater, parent);
     }
 
-    public IViewRecordingView getViewRecordingView(ViewGroup parent) {
-        return new ViewRecordingView(layoutInflater, parent, this);
+    public IViewRecordingView getViewRecordingView(ViewGroup parent, Recording recording) {
+        return new ViewRecordingView(layoutInflater, parent, this, recording);
     }
 }

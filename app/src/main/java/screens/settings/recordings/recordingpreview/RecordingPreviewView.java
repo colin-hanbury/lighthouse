@@ -20,14 +20,14 @@ public class RecordingPreviewView extends BaseObservableView<IRecordingPreviewVi
     private TextView mDate;
 
     public RecordingPreviewView(LayoutInflater inflater, @Nullable ViewGroup parent) {
-        setRootView(inflater.inflate(R.layout.recording_file, parent, false));
+        setRootView(inflater.inflate(R.layout.recording_preview, parent, false));
         mTitle = findViewById(R.id.recording_file_title);
         mDate = findViewById(R.id.recording_file_date);
         getRootView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 for (Listener listener : getListeners()) {
-                    listener.onRecordingFileClicked(mRecording);
+                    listener.onRecordingClicked(mRecording);
                 }
             }
         });
@@ -35,7 +35,7 @@ public class RecordingPreviewView extends BaseObservableView<IRecordingPreviewVi
 
 
     @Override
-    public void bindRecordingFile(Recording recording) {
+    public void bindRecording(Recording recording) {
         mRecording = recording;
         mTitle.setText(mRecording.getTitle());
         mDate.setText(mRecording.getDate());

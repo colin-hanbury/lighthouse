@@ -58,4 +58,7 @@ public class ToolbarView extends BaseView {
     public void setTitle(String title) {
         mTxtTitle.setText(title);
     }
+    public void setTitleTextSize(float size){
+        mTxtTitle.setTextSize(size);
+    }
 }

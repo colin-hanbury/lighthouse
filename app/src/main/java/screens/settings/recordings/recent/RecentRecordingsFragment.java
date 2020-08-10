@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ public class RecentRecordingsFragment extends BaseFragment
         implements IRecentRecordingsView.Listener, PostLogout.Listener,
         FetchRecentRecordingTitles.Listener {
 
+    private static String TAG = "Recent Recordings";
     private IRecentRecordingsView mIRecentRecordingsView;
     private ScreensNavigator mScreensNavigator;
     private PostLogout mPostLogout;
@@ -90,12 +92,14 @@ public class RecentRecordingsFragment extends BaseFragment
 
     @Override
     public void onFetchRecentRecordingsSuccess(List<Recording> recordings) {
+        Log.i(TAG, "titles fetched");
         mIRecentRecordingsView.hideProgressIndication();
-        mIRecentRecordingsView.bindRecordings(recordings);
+        mIRecentRecordingsView.bindRecentRecordings(recordings);
     }
 
     @Override
     public void onFetchRecentRecordingsFailure(String error) {
+        Log.i(TAG, "titles not fetched: " + error);
         mIRecentRecordingsView.showToast(error);
     }
 }

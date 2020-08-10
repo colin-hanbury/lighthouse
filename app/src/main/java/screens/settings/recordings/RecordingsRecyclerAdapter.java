@@ -18,7 +18,7 @@ public class RecordingsRecyclerAdapter extends
 
     private final Listener mListener;
     private final LightHouseViewFactory mLightHouseFactory;
-    private final List<Recording> mRecordings;
+    private List<Recording> mRecordings = new ArrayList<>();
 
 
 
@@ -29,7 +29,12 @@ public class RecordingsRecyclerAdapter extends
     public RecordingsRecyclerAdapter(Listener listener, LightHouseViewFactory lightHouseViewFactory){
         mListener = listener;
         mLightHouseFactory = lightHouseViewFactory;
-        mRecordings = new ArrayList<>();
+
+    }
+
+    public void bindRecordings(List<Recording> recordings) {
+        mRecordings = new ArrayList<>(recordings);
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -42,7 +47,7 @@ public class RecordingsRecyclerAdapter extends
 
     @Override
     public void onBindViewHolder(@NonNull RecordingsViewHolder holder, int position) {
-        holder.mIRecordingPreviewView.bindRecordingFile(mRecordings.get(position));
+        holder.mIRecordingPreviewView.bindRecording(mRecordings.get(position));
     }
 
     @Override

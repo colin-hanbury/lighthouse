@@ -14,6 +14,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -39,10 +40,9 @@ public class PostToRecentRecordings extends BaseObservable<PostToRecentRecording
         mUsername = User.getUserInstance().getUsername();
         Log.i(TAG, mUsername);
         String fileName = file.getName();
-
         Uri fileUri = Uri.fromFile(file);
-//        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss",
-//                Locale.getDefault()).format(new Date());
+        String date = new SimpleDateFormat("yyyy/MM/dd - HH:mm",
+                Locale.getDefault()).format(new Date());
         Log.i(TAG, "starting storage post");
          mStorageRef = FirebaseStorage.getInstance().getReference()
                  .child("users").child(mUsername).child("recentrecordings")
@@ -53,7 +53,7 @@ public class PostToRecentRecordings extends BaseObservable<PostToRecentRecording
                  Uri uri = taskSnapshot.getUploadSessionUri();
                  Log.i(TAG, "post storage success");
                  notifySuccess();
-                 //saveUriToDB(uri, time);
+                 saveToDB(uri, fileName, date);
              }
          }).addOnFailureListener(new OnFailureListener() {
              @Override
@@ -64,27 +64,29 @@ public class PostToRecentRecordings extends BaseObservable<PostToRecentRecording
          });
     }
 
-//    private void saveUriToDB(Uri uri, String time) {
-//        mDatabase = FirebaseFirestore.getInstance();
-//        Map<String, String> uriMap = new HashMap<>();
-//        uriMap.put("videouri", uri.toString());
-//        Log.i(TAG, "starting db post");
-//        mDatabase.collection("users").document(mUsername)
-//                .collection("recentrecordings").document(time).set(uriMap)
-//                .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                    @Override
-//                    public void onSuccess(Void aVoid) {
-//                        Log.i(TAG, "post db success");
-//                        notifySuccess();
-//                    }
-//                }).addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Log.i(TAG, "post db failure\n " + e.getMessage());
-//                        notifyFailure(e.getMessage());
-//                    }
-//        });
-//    }
+    private void saveToDB(Uri uri, String title, String date) {
+        mDatabase = FirebaseFirestore.getInstance();
+        Map<String, String> recordindDetailsMap = new HashMap<>();
+        recordindDetailsMap.put("title", title);
+        recordindDetailsMap.put("date", date);
+        recordindDetailsMap.put("videouri", uri.toString());
+        Log.i(TAG, "starting db post");
+        mDatabase.collection("users").document(mUsername)
+                .collection("recentrecordings").document(title).set(recordindDetailsMap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.i(TAG, "post db success");
+                        notifySuccess();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.i(TAG, "post db failure\n " + e.getMessage());
+                        notifyFailure(e.getMessage());
+                    }
+        });
+    }
 
     private void notifySuccess(){
         for (Listener listener: getListeners()){
