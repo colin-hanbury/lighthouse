@@ -7,24 +7,14 @@ import java.util.Date;
 public class Recording {
     private final String mTitle;
     private final String mDate;
+    private final String mUri;
 
-    public Recording(String title, String date){
+    public Recording(String title, String date, String uri){
         this.mTitle = title;
         this.mDate = date;
+        this.mUri = uri;
     }
-//
-//    private String makeDateString(String title) {
-//        try{
-//            String tempDateArray[] = title.replace("VID_", "").split("_");
-//            String tempDate = tempDateArray[0];
-//            Date date = new SimpleDateFormat("yyyy/MM/dd").parse(tempDate);
-//            return date.toString();
-//        }
-//         catch (ParseException e)  {
-//            //do nothing for now
-//         }
-//
-//    }
+
 
     public String getTitle() {
         return mTitle;
@@ -34,5 +24,7 @@ public class Recording {
         return mDate;
     }
 
-
+    public String getUri() {
+        return mUri;
+    }
 }

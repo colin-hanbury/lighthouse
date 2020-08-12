@@ -51,9 +51,11 @@ public class FetchRecentRecordingTitles extends BaseObservable<FetchRecentRecord
                     for (QueryDocumentSnapshot snapshot: task.getResult()){
                         String title = (String) snapshot.get("title");
                         String date = (String) snapshot.get("date");
+                        String uri = (String) snapshot.get("videouri");
                         Log.i(TAG, title);
                         Log.i(TAG, date);
-                        Recording recording = new Recording(title, date);
+                        Log.i(TAG, uri);
+                        Recording recording = new Recording(title, date, uri);
                         recordings.add(recording);
                     }
                     if (recordings.isEmpty()){

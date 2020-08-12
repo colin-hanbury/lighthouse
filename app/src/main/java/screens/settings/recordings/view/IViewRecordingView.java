@@ -10,6 +10,10 @@ public interface IViewRecordingView extends IBaseObservableView<IViewRecordingVi
         void onPlayPauseClicked();
     }
 
+    void play();
+
+    void pause();
+
     void showProgressIndication();
 
     void hideProgressIndication();

@@ -1,19 +1,14 @@
 package screens.settings.recordings.view;
 
 import android.os.Bundle;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import data.recordings.Recording;
-import hanbury.colin.lighthouse.R;
 import networking.logout.PostLogout;
 import screens.common.controllers.BaseFragment;
 import screens.common.navigation.screennavigation.ScreensNavigator;
-import screens.common.toolbar.ToolbarView;
-import screens.settings.recordings.recent.IRecentRecordingsView;
-import screens.settings.recordings.recent.RecentRecordingsFragment;
 
 
 public class ViewRecordingFragment extends BaseFragment implements IViewRecordingView.Listener,
@@ -23,6 +18,7 @@ public class ViewRecordingFragment extends BaseFragment implements IViewRecordin
     private IViewRecordingView mIViewRecordingView;
     private ScreensNavigator mScreenNavigator;
     private PostLogout mPostLogout;
+    private boolean isPlaying = false;
 
     public ViewRecordingFragment(Recording recording) {
         mRecording = recording;
@@ -69,7 +65,15 @@ public class ViewRecordingFragment extends BaseFragment implements IViewRecordin
 
     @Override
     public void onPlayPauseClicked() {
-
+        if(isPlaying){
+            mIViewRecordingView.pause();
+            isPlaying = false;
+        }
+        else {
+            mIViewRecordingView.showProgressIndication();
+            mIViewRecordingView.play();
+            isPlaying = true;
+        }
     }
 
     @Override
