@@ -37,7 +37,8 @@ public class ViewRecordingView extends BaseObservableView<IViewRecordingView.Lis
         mRecording = recording;
         mProgressBar = findViewById(R.id.view_recording_progress);
         mVideoView = findViewById(R.id.view_recording_video_view);
-        Uri uri = Uri.parse(recording.getUri());
+//        Uri uri = Uri.parse(recording.getUri());
+        Uri uri = Uri.parse("https://youtu.be/QfNvhPx5Px8");
         mVideoView.setVideoURI(uri);
         mPlayPauseButton = findViewById(R.id.view_recording_play_pause_button);
         mToolbar = findViewById(R.id.toolbar_widget);
@@ -52,7 +53,6 @@ public class ViewRecordingView extends BaseObservableView<IViewRecordingView.Lis
             }
         });
     }
-
 
     private void initToolbar() {
         mToolbar.addView(mToolbarView.getRootView());

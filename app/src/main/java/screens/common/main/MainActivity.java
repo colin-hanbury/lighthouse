@@ -97,12 +97,14 @@ public class MainActivity extends BaseActivity implements IBottomNavigationBar.L
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 //Prompt the user once explanation has been shown
                                 ActivityCompat.requestPermissions(MainActivity.this,
-                                        new String[]{Manifest.permission.CAMERA,
+                                        new String[]{
+                                                Manifest.permission.CAMERA,
                                                 Manifest.permission.ACCESS_FINE_LOCATION,
                                                 Manifest.permission.ACCESS_COARSE_LOCATION,
                                                 Manifest.permission.RECORD_AUDIO,
                                                 Manifest.permission.READ_EXTERNAL_STORAGE,
-                                                Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                                                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                                Manifest.permission.INTERNET},
                                         99);
                             }
                         })
@@ -112,10 +114,14 @@ public class MainActivity extends BaseActivity implements IBottomNavigationBar.L
             else {
                 // No explanation needed, we can request the permission.
                 ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.CAMERA,
+                        new String[]{
+                                Manifest.permission.CAMERA,
+                                Manifest.permission.ACCESS_FINE_LOCATION,
+                                Manifest.permission.ACCESS_COARSE_LOCATION,
                                 Manifest.permission.RECORD_AUDIO,
-                        Manifest.permission.READ_EXTERNAL_STORAGE,
-                                Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                                Manifest.permission.READ_EXTERNAL_STORAGE,
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                Manifest.permission.INTERNET},
                         99);
             }
             return false;
