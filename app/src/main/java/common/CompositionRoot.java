@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 
 import data.user.User;
+import networking.fetch.recordings.FetchRecentRecording;
 import networking.fetch.recordings.FetchRecentRecordingTitles;
 import networking.login.FetchLogin;
 import networking.login.FetchRegistration;
@@ -83,5 +84,9 @@ public class CompositionRoot {
 
     public FetchRecentRecordingTitles getFetchRecentRecordingTitles() {
         return new FetchRecentRecordingTitles();
+    }
+
+    public FetchRecentRecording getFetchRecentRecording() {
+        return new FetchRecentRecording();
     }
 }

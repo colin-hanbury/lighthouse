@@ -19,4 +19,6 @@ public interface IViewRecordingView extends IBaseObservableView<IViewRecordingVi
     void hideProgressIndication();
 
     void showToast(String message);
+
+    void setRecordingPath(String path);
 }

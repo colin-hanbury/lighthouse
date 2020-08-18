@@ -1,13 +1,11 @@
 package data.recordings;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class Recording {
     private final String mTitle;
     private final String mDate;
     private final String mUri;
+    private String mPath;
 
     public Recording(String title, String date, String uri){
         this.mTitle = title;
@@ -15,7 +13,9 @@ public class Recording {
         this.mUri = uri;
     }
 
-
+    public void setFilePath(String path){
+        mPath = path;
+    }
     public String getTitle() {
         return mTitle;
     }
@@ -26,5 +26,9 @@ public class Recording {
 
     public String getUri() {
         return mUri;
+    }
+
+    public String getFilePath(){
+        return mPath;
     }
 }

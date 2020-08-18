@@ -1,5 +1,6 @@
 package screens.settings.recordings.view;
 
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +27,7 @@ public class ViewRecordingView extends BaseObservableView<IViewRecordingView.Lis
 
     private final Toolbar mToolbar;
     private final ToolbarView mToolbarView;
-    private final Recording mRecording;
+    private Recording mRecording;
     private final ProgressBar mProgressBar;
     private final VideoView mVideoView;
     private final ImageButton mPlayPauseButton;
@@ -37,9 +38,9 @@ public class ViewRecordingView extends BaseObservableView<IViewRecordingView.Lis
         mRecording = recording;
         mProgressBar = findViewById(R.id.view_recording_progress);
         mVideoView = findViewById(R.id.view_recording_video_view);
-//        Uri uri = Uri.parse(recording.getUri());
-        Uri uri = Uri.parse("https://youtu.be/QfNvhPx5Px8");
-        mVideoView.setVideoURI(uri);
+        MediaController mediaController = new MediaController(getContext());
+        mediaController.setAnchorView(mVideoView);
+        mVideoView.setMediaController(mediaController);
         mPlayPauseButton = findViewById(R.id.view_recording_play_pause_button);
         mToolbar = findViewById(R.id.toolbar_widget);
         mToolbarView = lightHouseViewFactory.getToolbarView(parent);
@@ -78,11 +79,10 @@ public class ViewRecordingView extends BaseObservableView<IViewRecordingView.Lis
         });
     }
 
+
     @Override
     public void play() {
-//        MediaController mediaController = new MediaController(getContext());
-//        mediaController.setAnchorView(mVideoView);
-//        mVideoView.setMediaController(mediaController);
+
         mVideoView.start();
         mProgressBar.setVisibility(View.GONE);
         mPlayPauseButton.setImageResource(ic_pause_button);
@@ -108,4 +108,10 @@ public class ViewRecordingView extends BaseObservableView<IViewRecordingView.Lis
     public void showToast(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_LONG);
     }
+
+    @Override
+    public void setRecordingPath(String path) {
+        mRecording.setFilePath(path);
+    }
+
 }

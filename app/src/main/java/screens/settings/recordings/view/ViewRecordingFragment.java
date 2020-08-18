@@ -5,20 +5,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.File;
+
 import data.recordings.Recording;
+import networking.fetch.recordings.FetchRecentRecording;
 import networking.logout.PostLogout;
 import screens.common.controllers.BaseFragment;
 import screens.common.navigation.screennavigation.ScreensNavigator;
 
 
 public class ViewRecordingFragment extends BaseFragment implements IViewRecordingView.Listener,
-        PostLogout.Listener {
+        PostLogout.Listener, FetchRecentRecording.Listener {
 
     private final Recording mRecording;
     private IViewRecordingView mIViewRecordingView;
     private ScreensNavigator mScreenNavigator;
     private PostLogout mPostLogout;
     private boolean isPlaying = false;
+    private FetchRecentRecording mFetchRecentRecording;
 
     public ViewRecordingFragment(Recording recording) {
         mRecording = recording;
@@ -36,6 +40,7 @@ public class ViewRecordingFragment extends BaseFragment implements IViewRecordin
                 .getViewRecordingView(container, mRecording);
         mPostLogout = getCompositionRoot().getPostLogout();
         mScreenNavigator = getCompositionRoot().getScreensNavigator();
+        mFetchRecentRecording = getCompositionRoot().getFetchRecentRecording();
         return mIViewRecordingView.getRootView();
     }
 
@@ -44,12 +49,20 @@ public class ViewRecordingFragment extends BaseFragment implements IViewRecordin
         super.onStart();
         mIViewRecordingView.registerListener(this);
         mPostLogout.registerListener(this);
+        mFetchRecentRecording.registerListener(this);
+        fetchRecording();
+    }
+
+    private void fetchRecording() {
+        mIViewRecordingView.showProgressIndication();
+        mFetchRecentRecording.tryFetchRecentRecordingAndNotify(mRecording.getTitle(), getContext());
     }
 
     @Override
     public void onStop() {
         mIViewRecordingView.unregisterListener(this);
         mPostLogout.unregisterListener(this);
+        mFetchRecentRecording.unregisterListener(this);
         super.onStop();
     }
 
@@ -70,7 +83,6 @@ public class ViewRecordingFragment extends BaseFragment implements IViewRecordin
             isPlaying = false;
         }
         else {
-            mIViewRecordingView.showProgressIndication();
             mIViewRecordingView.play();
             isPlaying = true;
         }
@@ -83,6 +95,19 @@ public class ViewRecordingFragment extends BaseFragment implements IViewRecordin
 
     @Override
     public void onLogoutFailure(String error) {
+        mIViewRecordingView.showToast(error);
+    }
+
+    @Override
+    public void onFetchRecentRecordingSuccess(String filePath) {
+        mRecording.setFilePath(filePath);
+        mIViewRecordingView.setRecordingPath(filePath);
+        mIViewRecordingView.hideProgressIndication();
+    }
+
+    @Override
+    public void onFetchRecentRecordingFailure(String error) {
+        mIViewRecordingView.hideProgressIndication();
         mIViewRecordingView.showToast(error);
     }
 }
